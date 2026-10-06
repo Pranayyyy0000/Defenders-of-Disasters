@@ -5,8 +5,34 @@ export function calculateHeatIndex(temp: number, humidity: number): number {
   return Number((temp + 0.33 * humidity - 0.7).toFixed(2));
 }
 
+function cleanNumber(val: unknown, fallback: number, min?: number, max?: number): number {
+  if (val === null || val === undefined || typeof val === 'boolean') return fallback;
+  const num = Number(val);
+  if (isNaN(num) || !isFinite(num)) return fallback;
+  if (min !== undefined && num < min) return min;
+  if (max !== undefined && num > max) return max;
+  return Number(num.toFixed(2));
+}
+
+function getLatestValidReading(arr: unknown[] | undefined, fallback: number): number {
+  if (!arr || !Array.isArray(arr) || arr.length === 0) return fallback;
+  for (let i = arr.length - 1; i >= 0; i--) {
+    const val = arr[i];
+    if (val !== null && val !== undefined) {
+      const cleaned = cleanNumber(val, NaN);
+      if (!isNaN(cleaned)) return cleaned;
+    }
+  }
+  return fallback;
+}
+
 // Deterministic offline fallback based on coordinates to simulate consistent test datasets
-function getOfflineFallbackWeather(lat: number, lon: number, locationName: string, disasterType: 'flood' | 'heatwave'): WeatherData {
+function getOfflineFallbackWeather(
+  lat: number,
+  lon: number,
+  _locationName: string,
+  disasterType: 'flood' | 'heatwave'
+): WeatherData {
   const seed = Math.abs(Math.sin(lat * 12.9898 + lon * 78.233)) * 1000;
   const isHighRisk = seed % 10 > 4;
 
@@ -70,30 +96,27 @@ export async function fetchWeatherForLocation(
     }
 
     const data = await res.json();
-    const current = data.current_weather;
-    const hourly = data.hourly;
+    const current = data.current_weather || {};
+    const hourly = data.hourly || {};
 
-    const precipArr = hourly?.precipitation || [];
-    const humidityArr = hourly?.relative_humidity_2m || [];
-    const soilArr = hourly?.soil_moisture_1_to_3cm || [];
-
-    const precipitation = precipArr.length ? precipArr[precipArr.length - 1] : 0;
-    const humidity = humidityArr.length ? humidityArr[humidityArr.length - 1] : 60;
-    const soilMoisture = soilArr.length ? soilArr[soilArr.length - 1] : 0.25;
-    const temperature = current?.temperature ?? 28;
-    const windSpeed = current?.windspeed ?? 10;
+    // Validate and clean all 5 preserved parameters
+    const temperature = cleanNumber(current.temperature, 28, -60, 65);
+    const windSpeed = cleanNumber(current.windspeed, 10, 0, 300);
+    const precipitation = Math.max(0, getLatestValidReading(hourly.precipitation, 0));
+    const humidity = Math.min(100, Math.max(0, getLatestValidReading(hourly.relative_humidity_2m, 60)));
+    const soilMoisture = Math.min(1, Math.max(0, getLatestValidReading(hourly.soil_moisture_1_to_3cm, 0.25)));
 
     return {
-      temperature: Number(temperature.toFixed(1)),
-      windSpeed: Number(windSpeed.toFixed(1)),
-      precipitation: Number(precipitation.toFixed(1)),
-      humidity: Number(humidity.toFixed(1)),
-      soilMoisture: Number(soilMoisture.toFixed(2)),
+      temperature,
+      windSpeed,
+      precipitation,
+      humidity,
+      soilMoisture,
       heatIndex: calculateHeatIndex(temperature, humidity),
       isLive: true,
       timestamp: new Date().toLocaleTimeString(),
     };
-  } catch (err) {
+  } catch (_err) {
     // Graceful fallback to meteorological model
     return getOfflineFallbackWeather(lat, lon, locationName, disasterType);
   }

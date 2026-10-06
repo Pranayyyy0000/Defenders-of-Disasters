@@ -78,11 +78,32 @@ export interface EvacuationRoute {
 export interface ModelMetrics {
   rfAccuracy: number;
   lrAccuracy: number;
+  precision: number;
+  recall: number;
+  f1Score: number;
   sampleCount: number;
+  trainCount: number;
+  testCount: number;
+  randomState: number;
   safeCount: number;
   dangerCount: number;
+  confusionMatrix: {
+    trueNegative: number;
+    falsePositive: number;
+    falseNegative: number;
+    truePositive: number;
+  };
+  classificationReport: {
+    className: string;
+    precision: number;
+    recall: number;
+    f1: number;
+    support: number;
+  }[];
   featureWeights: { feature: string; weight: number }[];
   thresholdUsed: number;
+  isProxyLabel: boolean;
+  disclaimer: string;
 }
 
 export type SupportedLanguage =

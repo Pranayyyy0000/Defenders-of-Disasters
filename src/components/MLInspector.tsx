@@ -2,7 +2,19 @@ import React, { useState } from 'react';
 import { ModelMetrics, DisasterType, WeatherData } from '../types/disaster';
 import { calculateHeatIndex } from '../services/weatherService';
 import { calculateFloodSeverity, calculateHeatSeverity, getScore } from '../services/mlPipeline';
-import { Cpu, Sliders, ShieldCheck, AlertTriangle, Flame, CloudRain, Activity } from 'lucide-react';
+import {
+  Cpu,
+  Sliders,
+  ShieldCheck,
+  AlertTriangle,
+  Flame,
+  CloudRain,
+  Activity,
+  Info,
+  CheckCircle2,
+  Table,
+  Layers,
+} from 'lucide-react';
 
 interface MLInspectorProps {
   metrics: ModelMetrics;
@@ -56,9 +68,34 @@ export const MLInspector: React.FC<MLInspectorProps> = ({ metrics, disasterType,
     }
   }
 
+  const cm = metrics.confusionMatrix || { trueNegative: 0, falsePositive: 0, falseNegative: 0, truePositive: 0 };
+
   return (
     <div className="space-y-6">
-      {/* Top Models Performance Section */}
+      {/* Critical Methodology Note: Proxy Label Notice */}
+      <div className="rounded-2xl border border-amber-500/30 bg-amber-950/20 p-5 text-amber-200">
+        <div className="flex items-start gap-3">
+          <div className="p-2 rounded-xl bg-amber-500/20 text-[#FF5A36] shrink-0 mt-0.5">
+            <Info className="w-5 h-5" />
+          </div>
+          <div className="space-y-1">
+            <h4 className="font-display font-bold text-sm text-white">
+              Evaluation Methodology Notice: Heuristic Proxy Labels
+            </h4>
+            <p className="text-xs text-neutral-300 leading-relaxed font-sans">
+              {metrics.disclaimer}
+            </p>
+            <div className="pt-2 flex flex-wrap items-center gap-4 text-[11px] font-mono text-neutral-400">
+              <span>Split: 75% Train / 25% Test</span>
+              <span>Reproducible Seed: random_state={metrics.randomState}</span>
+              <span>Train Samples: {metrics.trainCount}</span>
+              <span>Held-Out Test Samples: {metrics.testCount}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Held-Out Test Set Validation Metrics */}
       <div className="rounded-2xl border border-white/10 dark:border-white/10 bg-[#121214] p-6 text-[#F6F5F2]">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
           <div className="flex items-center gap-3">
@@ -66,58 +103,128 @@ export const MLInspector: React.FC<MLInspectorProps> = ({ metrics, disasterType,
               <Cpu className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="font-display text-lg font-bold">Classifier Evaluation &amp; Thresholds</h3>
+              <h3 className="font-display text-lg font-bold">Held-Out Test Evaluation Metrics</h3>
               <p className="text-xs text-neutral-400">
-                Trained dynamically on {regionName} meteorological features &bull; {isFlood ? 'Flood Module' : 'Heatwave Module'}
+                Evaluated on unseen test split &bull; {regionName} &bull; {isFlood ? 'Flood Module' : 'Heatwave Module'}
               </p>
             </div>
           </div>
-          <span className="font-mono text-xs px-3 py-1 rounded-full bg-white/5 border border-white/10 text-neutral-300 self-start sm:self-center">
-            ENSEMBLE RUNTIME ACTIVE
+          <span className="font-mono text-xs px-3 py-1 rounded-full bg-[#10B981]/15 text-[#10B981] border border-[#10B981]/30 self-start sm:self-center">
+            VALIDATED TEST SPLIT
           </span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {/* Random Forest Card */}
+        {/* 4 Core Metrics Grid: Accuracy, Precision, Recall, F1 */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5">
           <div className="p-4 rounded-xl bg-white/5 border border-white/5">
             <div className="flex items-center justify-between text-xs text-neutral-400 font-mono mb-1">
-              <span>RANDOM FOREST</span>
-              <span>50 TREES</span>
+              <span>ACCURACY</span>
+              <span>TEST SET</span>
             </div>
             <div className="font-display text-3xl font-bold tracking-tight text-white">
               {(metrics.rfAccuracy * 100).toFixed(1)}%
             </div>
-            <div className="text-[11px] text-[#10B981] mt-1 font-mono flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]" />
-              Primary spatial decision model
-            </div>
+            <div className="text-[11px] text-[#10B981] mt-1 font-mono">Random Forest</div>
           </div>
 
-          {/* Logistic Regression Card */}
           <div className="p-4 rounded-xl bg-white/5 border border-white/5">
             <div className="flex items-center justify-between text-xs text-neutral-400 font-mono mb-1">
-              <span>LOGISTIC REGRESSION</span>
-              <span>SIGMOID</span>
+              <span>PRECISION</span>
+              <span>POSITIVE</span>
             </div>
             <div className="font-display text-3xl font-bold tracking-tight text-white">
-              {(metrics.lrAccuracy * 100).toFixed(1)}%
+              {(metrics.precision * 100).toFixed(1)}%
             </div>
-            <div className="text-[11px] text-neutral-400 mt-1 font-mono">
-              Secondary linear boundary verification
+            <div className="text-[11px] text-neutral-400 mt-1 font-mono">True Pos / (TP + FP)</div>
+          </div>
+
+          <div className="p-4 rounded-xl bg-white/5 border border-white/5">
+            <div className="flex items-center justify-between text-xs text-neutral-400 font-mono mb-1">
+              <span>RECALL</span>
+              <span>SENSITIVITY</span>
+            </div>
+            <div className="font-display text-3xl font-bold tracking-tight text-white">
+              {(metrics.recall * 100).toFixed(1)}%
+            </div>
+            <div className="text-[11px] text-neutral-400 mt-1 font-mono">True Pos / (TP + FN)</div>
+          </div>
+
+          <div className="p-4 rounded-xl bg-white/5 border border-white/5">
+            <div className="flex items-center justify-between text-xs text-neutral-400 font-mono mb-1">
+              <span>F1-SCORE</span>
+              <span>HARMONIC</span>
+            </div>
+            <div className="font-display text-3xl font-bold tracking-tight text-[#FF5A36]">
+              {(metrics.f1Score * 100).toFixed(1)}%
+            </div>
+            <div className="text-[11px] text-neutral-400 mt-1 font-mono">Balanced F-Measure</div>
+          </div>
+        </div>
+
+        {/* Confusion Matrix & Classification Report Split */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6 pt-6 border-t border-white/10">
+          {/* Confusion Matrix */}
+          <div className="lg:col-span-5 space-y-3">
+            <h4 className="font-mono text-xs uppercase tracking-wider text-neutral-400 flex items-center gap-2">
+              <Layers className="w-3.5 h-3.5 text-[#FF5A36]" />
+              Confusion Matrix (Test Split)
+            </h4>
+
+            <div className="bg-black/40 border border-white/5 rounded-xl p-4 font-mono text-xs">
+              <div className="grid grid-cols-3 gap-2 text-center items-center">
+                <div />
+                <div className="text-[10px] text-neutral-500 uppercase">Pred Safe (0)</div>
+                <div className="text-[10px] text-neutral-500 uppercase">Pred Hazard (1)</div>
+
+                <div className="text-[10px] text-neutral-400 uppercase text-left">Actual Safe</div>
+                <div className="p-2.5 rounded-lg bg-emerald-950/30 border border-emerald-800/30 font-bold text-[#10B981]">
+                  TN: {cm.trueNegative}
+                </div>
+                <div className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-neutral-300">
+                  FP: {cm.falsePositive}
+                </div>
+
+                <div className="text-[10px] text-neutral-400 uppercase text-left">Actual Hazard</div>
+                <div className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-neutral-300">
+                  FN: {cm.falseNegative}
+                </div>
+                <div className="p-2.5 rounded-lg bg-[#FF5A36]/15 border border-[#FF5A36]/30 font-bold text-[#FF5A36]">
+                  TP: {cm.truePositive}
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Dynamic Threshold Card */}
-          <div className="p-4 rounded-xl bg-white/5 border border-white/5">
-            <div className="flex items-center justify-between text-xs text-neutral-400 font-mono mb-1">
-              <span>DYNAMIC THRESHOLD</span>
-              <span>DATASET MEAN</span>
-            </div>
-            <div className="font-display text-3xl font-bold tracking-tight text-[#FF5A36]">
-              {metrics.thresholdUsed}
-            </div>
-            <div className="text-[11px] text-neutral-400 mt-1 font-mono">
-              {isFlood ? 'Mean(Humidity, Soil × 100)' : 'Mean Heat Index (°C)'}
+          {/* Classification Report Table */}
+          <div className="lg:col-span-7 space-y-3">
+            <h4 className="font-mono text-xs uppercase tracking-wider text-neutral-400 flex items-center gap-2">
+              <Table className="w-3.5 h-3.5 text-[#FF5A36]" />
+              Classification Report Breakdown
+            </h4>
+
+            <div className="bg-black/40 border border-white/5 rounded-xl overflow-hidden font-mono text-xs">
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="border-b border-white/10 text-[10px] text-neutral-500 uppercase">
+                    <th className="p-2.5">Class</th>
+                    <th className="p-2.5">Precision</th>
+                    <th className="p-2.5">Recall</th>
+                    <th className="p-2.5">F1</th>
+                    <th className="p-2.5">Support</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/5 text-neutral-300 text-[11px]">
+                  {metrics.classificationReport.map((row) => (
+                    <tr key={row.className} className="hover:bg-white/5">
+                      <td className="p-2.5 font-bold text-white">{row.className}</td>
+                      <td className="p-2.5">{row.precision}</td>
+                      <td className="p-2.5">{row.recall}</td>
+                      <td className="p-2.5 text-[#FF5A36]">{row.f1}</td>
+                      <td className="p-2.5 text-neutral-400">{row.support}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -126,14 +233,14 @@ export const MLInspector: React.FC<MLInspectorProps> = ({ metrics, disasterType,
         <div className="mt-6 pt-6 border-t border-white/10">
           <h4 className="font-mono text-xs uppercase tracking-wider text-neutral-400 mb-3 flex items-center gap-2">
             <Activity className="w-3.5 h-3.5 text-[#FF5A36]" />
-            Feature Importance Weight Matrix
+            Random Forest Gini Feature Importance
           </h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {metrics.featureWeights.map((fw) => (
               <div key={fw.feature} className="p-3 rounded-lg bg-black/40 border border-white/5">
-                <div className="flex justify-between text-xs mb-1.5">
+                <div className="flex justify-between text-xs mb-1.5 font-mono">
                   <span className="text-neutral-300">{fw.feature}</span>
-                  <span className="font-mono font-bold text-white">{(fw.weight * 100).toFixed(0)}%</span>
+                  <span className="font-bold text-white">{(fw.weight * 100).toFixed(0)}%</span>
                 </div>
                 <div className="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
                   <div
