@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_3cacc60d530523bc82721f5b908bffd6 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.css"/>
+    <script src="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.css"/>
+</head>
+<body>
+    
+    
+<div style="position: fixed; top: 10px; left: 50px; z-index: 1000;">
+  <label><b>Select Language:</b></label>
+  <select onchange="changeLanguage(this.value)">
+    <option value="en">English</option><option value="hi">Hindi</option><option value="ta">Tamil</option><option value="te">Telugu</option><option value="kn">Kannada</option><option value="ml">Malayalam</option><option value="bn">Bengali</option><option value="mr">Marathi</option><option value="gu">Gujarati</option><option value="pa">Punjabi</option><option value="ur">Urdu</option><option value="as">Assamese</option><option value="or">Odia</option>
+  </select>
+</div>
+<script>
+function changeLanguage(lang) {
+  const elements = document.querySelectorAll("[data-translate]");
+  elements.forEach(el => {
+    const translations = JSON.parse(el.getAttribute("data-translate"));
+    el.innerHTML = translations[lang] || translations['en'];
+  });
+}
+</script>
+    
+            <div class="folium-map" id="map_3cacc60d530523bc82721f5b908bffd6" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_3cacc60d530523bc82721f5b908bffd6 = L.map(
+                "map_3cacc60d530523bc82721f5b908bffd6",
+                {
+                    center: [17.41494375, 78.46506875],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 6,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_ab185b9959d58da0ba5a9c4c5bfdfde9 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_ab185b9959d58da0ba5a9c4c5bfdfde9.addTo(map_3cacc60d530523bc82721f5b908bffd6);
+        
+    
+            var circle_marker_fe73b8ff1d985da9230d4254d925943c = L.circleMarker(
+                [17.4435, 78.3772],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 40, "stroke": true, "weight": 3}
+            ).addTo(map_3cacc60d530523bc82721f5b908bffd6);
+        
+    
+        var popup_13f58311f8e85c694297cbae88d1e1e0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3456579fc98f4e0c266662ac2253c641 = $(`<div id="html_3456579fc98f4e0c266662ac2253c641" style="width: 100.0%; height: 100.0%;"><div data-translate="{&quot;en&quot;: &quot;\u2705 Safe Area: Hitech City&quot;, &quot;hi&quot;: &quot;\u2705 \u0938\u0941\u0930\u0915\u094d\u0937\u093f\u0924 \u0915\u094d\u0937\u0947\u0924\u094d\u0930: \u0939\u093e\u0908\u091f\u0947\u0915 \u0938\u093f\u091f\u0940&quot;, &quot;ta&quot;: &quot;\u2705 \u0baa\u0bbe\u0ba4\u0bc1\u0b95\u0bbe\u0baa\u0bcd\u0baa\u0bbe\u0ba9 \u0baa\u0b95\u0bc1\u0ba4\u0bbf: \u0bb9\u0bc8\u0b9f\u0bc6\u0b95\u0bcd \u0b9a\u0bbf\u0b9f\u0bcd\u0b9f\u0bbf&quot;, &quot;te&quot;: &quot;\u2705 \u0c38\u0c41\u0c30\u0c15\u0c4d\u0c37\u0c3f\u0c24 \u0c2a\u0c4d\u0c30\u0c3e\u0c02\u0c24\u0c02: \u0c39\u0c48\u0c1f\u0c46\u0c15\u0c4d \u0c38\u0c3f\u0c1f\u0c40&quot;, &quot;kn&quot;: &quot;\u2705 \u0cb8\u0cc1\u0cb0\u0c95\u0ccd\u0cb7\u0cbf\u0ca4 \u0caa\u0ccd\u0cb0\u0ca6\u0cc7\u0cb6: \u0cb9\u0cc8\u0c9f\u0cc6\u0c95\u0ccd \u0cb8\u0cbf\u0c9f\u0cbf&quot;, &quot;ml&quot;: &quot;\u2705 \u0d38\u0d41\u0d30\u0d15\u0d4d\u0d37\u0d3f\u0d24 \u0d2e\u0d47\u0d16\u0d32: \u0d39\u0d48\u0d1f\u0d46\u0d15\u0d4d \u0d38\u0d3f\u0d31\u0d4d\u0d31\u0d3f&quot;, &quot;bn&quot;: &quot;\u2705 \u09a8\u09bf\u09b0\u09be\u09aa\u09a6 \u098f\u09b2\u09be\u0995\u09be: \u09b9\u09be\u0987\u099f\u09c7\u0995 \u09b8\u09bf\u099f\u09bf&quot;, &quot;mr&quot;: &quot;\u2705 \u0938\u0941\u0930\u0915\u094d\u0937\u093f\u0924 \u0915\u094d\u0937\u0947\u0924\u094d\u0930: \u0939\u093e\u092f\u091f\u0947\u0915 \u0938\u093f\u091f\u0940&quot;, &quot;gu&quot;: &quot;\u2705 \u0ab8\u0ab2\u0abe\u0aae\u0aa4 \u0ab5\u0abf\u0ab8\u0acd\u0aa4\u0abe\u0ab0: \u0ab9\u0abe\u0a87\u0a9f\u0ac7\u0a95 \u0ab8\u0abf\u0a9f\u0ac0&quot;, &quot;pa&quot;: &quot;\u2705 \u0a38\u0a41\u0a30\u0a71\u0a16\u0a3f\u0a05\u0a24 \u0a16\u0a47\u0a24\u0a30: \u0a39\u0a3e\u0a08\u0a1f\u0a48\u0a15 \u0a38\u0a3f\u0a1f\u0a40&quot;, &quot;ur&quot;: &quot;\u2705 \u0645\u062d\u0641\u0648\u0638 \u0639\u0644\u0627\u0642\u06c1: \u06c1\u0627\u0626\u06cc\u0679\u06cc\u06a9 \u0633\u0679\u06cc&quot;, &quot;as&quot;: &quot;\u2705 \u09a8\u09bf\u09f0\u09be\u09aa\u09a6 \u098f\u09b2\u09c7\u0995\u09be: \u09b9\u09be\u0987\u099f\u09c7\u0995 \u099a\u09bf\u099f\u09bf&quot;, &quot;or&quot;: &quot;\u2705 \u0b28\u0b3f\u0b30\u0b3e\u0b2a\u0b26 \u0b15\u0b4d\u0b37\u0b47\u0b24\u0b4d\u0b30: \u0b39\u0b3f\u0b1f\u0b47\u0b15\u0b4d \u0b38\u0b3f\u0b1f\u0b3f |&quot;}">✅ Safe Area: Hitech City</div></div>`)[0];
+                popup_13f58311f8e85c694297cbae88d1e1e0.setContent(html_3456579fc98f4e0c266662ac2253c641);
+            
+        
+
+        circle_marker_fe73b8ff1d985da9230d4254d925943c.bindPopup(popup_13f58311f8e85c694297cbae88d1e1e0)
+        ;
+
+        
+    
+    
+            var circle_marker_b3cf98e46c56f251b922e464ee11fe5d = L.circleMarker(
+                [17.4401, 78.3489],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 40, "stroke": true, "weight": 3}
+            ).addTo(map_3cacc60d530523bc82721f5b908bffd6);
+        
+    
+        var popup_347e4db97287abf24000ac409876994d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_82303795ae00b09fe645c5bcd520a3cc = $(`<div id="html_82303795ae00b09fe645c5bcd520a3cc" style="width: 100.0%; height: 100.0%;"><div data-translate="{&quot;en&quot;: &quot;\u2705 Safe Area: Gachibowli&quot;, &quot;hi&quot;: &quot;\u2705 \u0938\u0941\u0930\u0915\u094d\u0937\u093f\u0924 \u0915\u094d\u0937\u0947\u0924\u094d\u0930: \u0917\u093e\u091a\u0940\u092c\u094b\u0935\u0932\u0940&quot;, &quot;ta&quot;: &quot;\u2705 \u0baa\u0bbe\u0ba4\u0bc1\u0b95\u0bbe\u0baa\u0bcd\u0baa\u0bbe\u0ba9 \u0baa\u0b95\u0bc1\u0ba4\u0bbf: \u0b95\u0b9a\u0bcd\u0b9a\u0bbf\u0baa\u0bcc\u0bb2\u0bbf&quot;, &quot;te&quot;: &quot;\u2705 \u0c38\u0c41\u0c30\u0c15\u0c4d\u0c37\u0c3f\u0c24 \u0c2a\u0c4d\u0c30\u0c3e\u0c02\u0c24\u0c02: \u0c17\u0c1a\u0c4d\u0c1a\u0c3f\u0c2c\u0c4c\u0c32\u0c3f&quot;, &quot;kn&quot;: &quot;\u2705 \u0cb8\u0cc1\u0cb0\u0c95\u0ccd\u0cb7\u0cbf\u0ca4 \u0caa\u0ccd\u0cb0\u0ca6\u0cc7\u0cb6: \u0c97\u0c9a\u0cbf\u0cac\u0ccc\u0cb2\u0cbf&quot;, &quot;ml&quot;: &quot;\u2705 \u0d38\u0d41\u0d30\u0d15\u0d4d\u0d37\u0d3f\u0d24 \u0d2e\u0d47\u0d16\u0d32: \u0d17\u0d1a\u0d4d\u0d1a\u0d3f\u0d2c\u0d57\u0d33\u0d3f&quot;, &quot;bn&quot;: &quot;\u2705 \u09a8\u09bf\u09b0\u09be\u09aa\u09a6 \u098f\u09b2\u09be\u0995\u09be: \u0997\u09be\u099b\u09bf\u09ac\u09be\u0989\u09b2\u09bf&quot;, &quot;mr&quot;: &quot;\u2705 \u0938\u0941\u0930\u0915\u094d\u0937\u093f\u0924 \u0915\u094d\u0937\u0947\u0924\u094d\u0930: \u0917\u091a\u093f\u092c\u094b\u0935\u0932\u0940&quot;, &quot;gu&quot;: &quot;\u2705 \u0ab8\u0ab2\u0abe\u0aae\u0aa4 \u0ab5\u0abf\u0ab8\u0acd\u0aa4\u0abe\u0ab0: \u0a97\u0a9a\u0ac0\u0aac\u0acb\u0ab5\u0ab2\u0ac0&quot;, &quot;pa&quot;: &quot;\u2705 \u0a38\u0a41\u0a30\u0a71\u0a16\u0a3f\u0a05\u0a24 \u0a16\u0a47\u0a24\u0a30: \u0a17\u0a3e\u0a1a\u0a40\u0a2c\u0a4b\u0a32\u0a40&quot;, &quot;ur&quot;: &quot;\u2705 \u0645\u062d\u0641\u0648\u0638 \u0639\u0644\u0627\u0642\u06c1: \u06af\u0686\u06cc \u0628\u0627\u0624\u0644\u06cc&quot;, &quot;as&quot;: &quot;\u2705 \u09a8\u09bf\u09f0\u09be\u09aa\u09a6 \u09b8\u09cd\u09a5\u09be\u09a8\u0983 \u0997\u09be\u099a\u09bf\u09ac\u09cc\u09b2\u09bf&quot;, &quot;or&quot;: &quot;\u2705 \u0b28\u0b3f\u0b30\u0b3e\u0b2a\u0b26 \u0b15\u0b4d\u0b37\u0b47\u0b24\u0b4d\u0b30: \u0b17\u0b3e\u0b1a\u0b3f\u0b2c\u0b4b\u0b2d\u0b32\u0b3f |&quot;}">✅ Safe Area: Gachibowli</div></div>`)[0];
+                popup_347e4db97287abf24000ac409876994d.setContent(html_82303795ae00b09fe645c5bcd520a3cc);
+            
+        
+
+        circle_marker_b3cf98e46c56f251b922e464ee11fe5d.bindPopup(popup_347e4db97287abf24000ac409876994d)
+        ;
+
+        
+    
+    
+            var circle_marker_cffac80a8dc10faad78ebdc1d03ea68f = L.circleMarker(
+                [17.4948, 78.3996],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 40, "stroke": true, "weight": 3}
+            ).addTo(map_3cacc60d530523bc82721f5b908bffd6);
+        
+    
+        var popup_873c007a7abd904261daefb265c3d2be = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3a0e8a00fd2488a4df2c40327f686754 = $(`<div id="html_3a0e8a00fd2488a4df2c40327f686754" style="width: 100.0%; height: 100.0%;"><div data-translate="{&quot;en&quot;: &quot;\u2705 Safe Area: Kukatpally&quot;, &quot;hi&quot;: &quot;\u2705 \u0938\u0941\u0930\u0915\u094d\u0937\u093f\u0924 \u0915\u094d\u0937\u0947\u0924\u094d\u0930: \u0915\u0941\u0915\u091f\u092a\u0932\u094d\u0932\u0940&quot;, &quot;ta&quot;: &quot;\u2705 \u0baa\u0bbe\u0ba4\u0bc1\u0b95\u0bbe\u0baa\u0bcd\u0baa\u0bbe\u0ba9 \u0baa\u0b95\u0bc1\u0ba4\u0bbf: \u0b95\u0bc1\u0b95\u0b9f\u0bcd\u0baa\u0bb2\u0bcd\u0bb2\u0bbf&quot;, &quot;te&quot;: &quot;\u2705 \u0c38\u0c41\u0c30\u0c15\u0c4d\u0c37\u0c3f\u0c24 \u0c2a\u0c4d\u0c30\u0c3e\u0c02\u0c24\u0c02: \u0c15\u0c42\u0c15\u0c1f\u0c4d\u200c\u0c2a\u0c32\u0c4d\u0c32\u0c3f&quot;, &quot;kn&quot;: &quot;\u2705 \u0cb8\u0cc1\u0cb0\u0c95\u0ccd\u0cb7\u0cbf\u0ca4 \u0caa\u0ccd\u0cb0\u0ca6\u0cc7\u0cb6: \u0c95\u0cc1\u0c95\u0c9f\u0ccd\u0caa\u0cb2\u0ccd\u0cb2\u0cbf&quot;, &quot;ml&quot;: &quot;\u2705 \u0d38\u0d41\u0d30\u0d15\u0d4d\u0d37\u0d3f\u0d24 \u0d2e\u0d47\u0d16\u0d32: \u0d15\u0d41\u0d15\u0d4d\u0d15\u0d1f\u0d4d\u0d1f\u0d4d\u0d2a\u0d33\u0d4d\u0d33\u0d3f&quot;, &quot;bn&quot;: &quot;\u2705 \u09a8\u09bf\u09b0\u09be\u09aa\u09a6 \u098f\u09b2\u09be\u0995\u09be: \u0995\u09c1\u0995\u09be\u099f\u09aa\u09b2\u09cd\u09b2\u09c0&quot;, &quot;mr&quot;: &quot;\u2705 \u0938\u0941\u0930\u0915\u094d\u0937\u093f\u0924 \u0915\u094d\u0937\u0947\u0924\u094d\u0930: \u0915\u0941\u0915\u091f\u092a\u0932\u094d\u0932\u0940&quot;, &quot;gu&quot;: &quot;\u2705 \u0ab8\u0ab2\u0abe\u0aae\u0aa4 \u0ab5\u0abf\u0ab8\u0acd\u0aa4\u0abe\u0ab0: \u0a95\u0ac1\u0a95\u0a9f\u0aaa\u0ab2\u0acd\u0ab2\u0ac0&quot;, &quot;pa&quot;: &quot;\u2705 \u0a38\u0a41\u0a30\u0a71\u0a16\u0a3f\u0a05\u0a24 \u0a16\u0a47\u0a24\u0a30: \u0a15\u0a41\u0a15\u0a1f\u0a2a\u0a71\u0a32\u0a40&quot;, &quot;ur&quot;: &quot;\u2705 \u0645\u062d\u0641\u0648\u0638 \u0639\u0644\u0627\u0642\u06c1: \u06a9\u0648\u06a9\u0679 \u067e\u0644\u06cc&quot;, &quot;as&quot;: &quot;\u2705 \u09a8\u09bf\u09f0\u09be\u09aa\u09a6 \u098f\u09b2\u09c7\u0995\u09be\u0983 \u0995\u09c1\u0995\u099f\u09aa\u09b2\u09cd\u09b2\u09c0&quot;, &quot;or&quot;: &quot;Fe \u0b28\u0b3f\u0b30\u0b3e\u0b2a\u0b26 \u0b15\u0b4d\u0b37\u0b47\u0b24\u0b4d\u0b30: \u0b15\u0b41\u0b15\u0b3e\u0b1f\u0b2a\u0b3e\u0b32\u0b3f |&quot;}">✅ Safe Area: Kukatpally</div></div>`)[0];
+                popup_873c007a7abd904261daefb265c3d2be.setContent(html_3a0e8a00fd2488a4df2c40327f686754);
+            
+        
+
+        circle_marker_cffac80a8dc10faad78ebdc1d03ea68f.bindPopup(popup_873c007a7abd904261daefb265c3d2be)
+        ;
+
+        
+    
+    
+            var circle_marker_b285dea8b6e3888a4b1cbc6665387c2c = L.circleMarker(
+                [17.4375, 78.4482],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 40, "stroke": true, "weight": 3}
+            ).addTo(map_3cacc60d530523bc82721f5b908bffd6);
+        
+    
+        var popup_5b010d59663e468d0681d87ea82a7285 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0f485cdd14a981a7e4adfdd2b0c4023f = $(`<div id="html_0f485cdd14a981a7e4adfdd2b0c4023f" style="width: 100.0%; height: 100.0%;"><div data-translate="{&quot;en&quot;: &quot;\u2705 Safe Area: Ameerpet&quot;, &quot;hi&quot;: &quot;\u2705 \u0938\u0941\u0930\u0915\u094d\u0937\u093f\u0924 \u0915\u094d\u0937\u0947\u0924\u094d\u0930: \u0905\u092e\u0940\u0930\u092a\u0947\u091f&quot;, &quot;ta&quot;: &quot;\u2705 \u0baa\u0bbe\u0ba4\u0bc1\u0b95\u0bbe\u0baa\u0bcd\u0baa\u0bbe\u0ba9 \u0baa\u0b95\u0bc1\u0ba4\u0bbf: \u0b85\u0bae\u0bc0\u0bb0\u0bcd\u0baa\u0bc7\u0b9f\u0bcd\u0b9f\u0bc8&quot;, &quot;te&quot;: &quot;\u2705 \u0c38\u0c41\u0c30\u0c15\u0c4d\u0c37\u0c3f\u0c24 \u0c2a\u0c4d\u0c30\u0c3e\u0c02\u0c24\u0c02: \u0c05\u0c2e\u0c40\u0c30\u0c4d\u200c\u0c2a\u0c47\u0c1f&quot;, &quot;kn&quot;: &quot;\u2705 \u0cb8\u0cc1\u0cb0\u0c95\u0ccd\u0cb7\u0cbf\u0ca4 \u0caa\u0ccd\u0cb0\u0ca6\u0cc7\u0cb6: \u0c85\u0cae\u0cc0\u0cb0\u0caa\u0cc7\u0c9f\u0ccd&quot;, &quot;ml&quot;: &quot;\u2705 \u0d38\u0d41\u0d30\u0d15\u0d4d\u0d37\u0d3f\u0d24 \u0d2e\u0d47\u0d16\u0d32: \u0d05\u0d2e\u0d40\u0d7c\u0d2a\u0d47\u0d1f\u0d4d\u0d1f\u0d4d&quot;, &quot;bn&quot;: &quot;\u2705 \u09a8\u09bf\u09b0\u09be\u09aa\u09a6 \u098f\u09b2\u09be\u0995\u09be: \u0986\u09ae\u09bf\u09b0\u09aa\u09c7\u099f&quot;, &quot;mr&quot;: &quot;\u2705 \u0938\u0941\u0930\u0915\u094d\u0937\u093f\u0924 \u0915\u094d\u0937\u0947\u0924\u094d\u0930: \u0905\u092e\u0940\u0930\u092a\u0947\u091f&quot;, &quot;gu&quot;: &quot;\u2705 \u0ab8\u0ab2\u0abe\u0aae\u0aa4 \u0ab5\u0abf\u0ab8\u0acd\u0aa4\u0abe\u0ab0: \u0a85\u0aae\u0ac0\u0ab0\u0aaa\u0ac7\u0a9f&quot;, &quot;pa&quot;: &quot;\u2705 \u0a38\u0a41\u0a30\u0a71\u0a16\u0a3f\u0a05\u0a24 \u0a16\u0a47\u0a24\u0a30: \u0a05\u0a2e\u0a40\u0a30\u0a2a\u0a47\u0a1f&quot;, &quot;ur&quot;: &quot;\u2705 \u0645\u062d\u0641\u0648\u0638 \u0639\u0644\u0627\u0642\u06c1: \u0627\u0645\u06cc\u0631\u067e\u06cc\u0679&quot;, &quot;as&quot;: &quot;\u2705 \u09a8\u09bf\u09f0\u09be\u09aa\u09a6 \u09b8\u09cd\u09a5\u09be\u09a8: \u0986\u09ae\u09bf\u09f0\u09aa\u09c7\u099f&quot;, &quot;or&quot;: &quot;\u2705 \u0b28\u0b3f\u0b30\u0b3e\u0b2a\u0b26 \u0b15\u0b4d\u0b37\u0b47\u0b24\u0b4d\u0b30: \u0b06\u0b2e\u0b47\u0b30\u0b2a\u0b47\u0b1f\u0b4d |&quot;}">✅ Safe Area: Ameerpet</div></div>`)[0];
+                popup_5b010d59663e468d0681d87ea82a7285.setContent(html_0f485cdd14a981a7e4adfdd2b0c4023f);
+            
+        
+
+        circle_marker_b285dea8b6e3888a4b1cbc6665387c2c.bindPopup(popup_5b010d59663e468d0681d87ea82a7285)
+        ;
+
+        
+    
+    
+            var circle_marker_1767b76b79bf8729d058c47f0e5054ca = L.circleMarker(
+                [17.4399, 78.4983],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 40, "stroke": true, "weight": 3}
+            ).addTo(map_3cacc60d530523bc82721f5b908bffd6);
+        
+    
+        var popup_010aea32a8b4e220233d1e3fc9fc9afc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_10a23f5018747b8b1378416375a5b569 = $(`<div id="html_10a23f5018747b8b1378416375a5b569" style="width: 100.0%; height: 100.0%;"><div data-translate="{&quot;en&quot;: &quot;\u2705 Safe Area: Secunderabad&quot;, &quot;hi&quot;: &quot;\u2705 \u0938\u0941\u0930\u0915\u094d\u0937\u093f\u0924 \u0915\u094d\u0937\u0947\u0924\u094d\u0930: \u0938\u093f\u0915\u0902\u0926\u0930\u093e\u092c\u093e\u0926&quot;, &quot;ta&quot;: &quot;\u2705 \u0baa\u0bbe\u0ba4\u0bc1\u0b95\u0bbe\u0baa\u0bcd\u0baa\u0bbe\u0ba9 \u0baa\u0b95\u0bc1\u0ba4\u0bbf: \u0b9a\u0bc6\u0b95\u0ba8\u0bcd\u0ba4\u0bbf\u0bb0\u0bbe\u0baa\u0bbe\u0ba4\u0bcd&quot;, &quot;te&quot;: &quot;\u2705 \u0c38\u0c41\u0c30\u0c15\u0c4d\u0c37\u0c3f\u0c24 \u0c2a\u0c4d\u0c30\u0c3e\u0c02\u0c24\u0c02: \u0c38\u0c3f\u0c15\u0c3f\u0c02\u0c26\u0c4d\u0c30\u0c3e\u0c2c\u0c3e\u0c26\u0c4d&quot;, &quot;kn&quot;: &quot;\u2705 \u0cb8\u0cc1\u0cb0\u0c95\u0ccd\u0cb7\u0cbf\u0ca4 \u0caa\u0ccd\u0cb0\u0ca6\u0cc7\u0cb6: \u0cb8\u0cbf\u0c95\u0c82\u0ca6\u0cb0\u0cbe\u0cac\u0cbe\u0ca6\u0ccd&quot;, &quot;ml&quot;: &quot;\u2705 \u0d38\u0d41\u0d30\u0d15\u0d4d\u0d37\u0d3f\u0d24 \u0d2e\u0d47\u0d16\u0d32: \u0d38\u0d46\u0d15\u0d4d\u0d15\u0d28\u0d4d\u0d24\u0d30\u0d3e\u0d2c\u0d3e\u0d26\u0d4d&quot;, &quot;bn&quot;: &quot;\u2705 \u09a8\u09bf\u09b0\u09be\u09aa\u09a6 \u098f\u09b2\u09be\u0995\u09be: \u09b8\u09c7\u0995\u09c7\u09a8\u09cd\u09a6\u09cd\u09b0\u09be\u09ac\u09be\u09a6&quot;, &quot;mr&quot;: &quot;\u2705 \u0938\u0941\u0930\u0915\u094d\u0937\u093f\u0924 \u0915\u094d\u0937\u0947\u0924\u094d\u0930: \u0938\u093f\u0915\u0902\u0926\u0930\u093e\u092c\u093e\u0926&quot;, &quot;gu&quot;: &quot;\u2705 \u0ab8\u0ab2\u0abe\u0aae\u0aa4 \u0ab5\u0abf\u0ab8\u0acd\u0aa4\u0abe\u0ab0: \u0ab8\u0abf\u0a95\u0a82\u0aa6\u0ab0\u0abe\u0aac\u0abe\u0aa6&quot;, &quot;pa&quot;: &quot;\u2705 \u0a38\u0a41\u0a30\u0a71\u0a16\u0a3f\u0a05\u0a24 \u0a16\u0a47\u0a24\u0a30: \u0a38\u0a3f\u0a15\u0a70\u0a26\u0a30\u0a3e\u0a2c\u0a3e\u0a26&quot;, &quot;ur&quot;: &quot;\u2705 \u0645\u062d\u0641\u0648\u0638 \u0639\u0644\u0627\u0642\u06c1: \u0633\u06a9\u0646\u062f\u0631\u0622\u0628\u0627\u062f&quot;, &quot;as&quot;: &quot;\u2705 \u09a8\u09bf\u09f0\u09be\u09aa\u09a6 \u098f\u09b2\u09c7\u0995\u09be\u0983 \u099b\u09c7\u0995\u09c7\u09a3\u09cd\u09a1\u09f0\u09be\u09ac\u09be\u09a6&quot;, &quot;or&quot;: &quot;Fe \u0b28\u0b3f\u0b30\u0b3e\u0b2a\u0b26 \u0b15\u0b4d\u0b37\u0b47\u0b24\u0b4d\u0b30: \u0b38\u0b47\u0b15\u0b47\u0b23\u0b4d\u0b21\u0b30\u0b3e\u0b2c\u0b3e\u0b26 |&quot;}">✅ Safe Area: Secunderabad</div></div>`)[0];
+                popup_010aea32a8b4e220233d1e3fc9fc9afc.setContent(html_10a23f5018747b8b1378416375a5b569);
+            
+        
+
+        circle_marker_1767b76b79bf8729d058c47f0e5054ca.bindPopup(popup_010aea32a8b4e220233d1e3fc9fc9afc)
+        ;
+
+        
+    
+    
+            var circle_marker_fc51ac9729b22484e5540b1b8b9609e7 = L.circleMarker(
+                [17.4443, 78.4662],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 40, "stroke": true, "weight": 3}
+            ).addTo(map_3cacc60d530523bc82721f5b908bffd6);
+        
+    
+        var popup_6fb87eb149f0b248209c537fcb0902e3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_11b18b80caa1906c411a253bdae3026a = $(`<div id="html_11b18b80caa1906c411a253bdae3026a" style="width: 100.0%; height: 100.0%;"><div data-translate="{&quot;en&quot;: &quot;\u2705 Safe Area: Begumpet&quot;, &quot;hi&quot;: &quot;\u2705 \u0938\u0941\u0930\u0915\u094d\u0937\u093f\u0924 \u0915\u094d\u0937\u0947\u0924\u094d\u0930: \u092c\u0947\u0917\u092e\u092a\u0947\u091f&quot;, &quot;ta&quot;: &quot;\u2705 \u0baa\u0bbe\u0ba4\u0bc1\u0b95\u0bbe\u0baa\u0bcd\u0baa\u0bbe\u0ba9 \u0baa\u0b95\u0bc1\u0ba4\u0bbf: \u0baa\u0bc7\u0b95\u0bae\u0bcd\u0baa\u0bc7\u0b9f\u0bcd\u0b9f\u0bc8&quot;, &quot;te&quot;: &quot;\u2705 \u0c38\u0c41\u0c30\u0c15\u0c4d\u0c37\u0c3f\u0c24 \u0c2a\u0c4d\u0c30\u0c3e\u0c02\u0c24\u0c02: \u0c2c\u0c47\u0c17\u0c02\u0c2a\u0c47\u0c1f&quot;, &quot;kn&quot;: &quot;\u2705 \u0cb8\u0cc1\u0cb0\u0c95\u0ccd\u0cb7\u0cbf\u0ca4 \u0caa\u0ccd\u0cb0\u0ca6\u0cc7\u0cb6: \u0cac\u0cc7\u0c97\u0c82\u0caa\u0cc7\u0c9f\u0cc6&quot;, &quot;ml&quot;: &quot;\u2705 \u0d38\u0d41\u0d30\u0d15\u0d4d\u0d37\u0d3f\u0d24 \u0d2e\u0d47\u0d16\u0d32: \u0d2c\u0d47\u0d17\u0d02\u0d2a\u0d47\u0d1f\u0d4d\u0d1f\u0d4d&quot;, &quot;bn&quot;: &quot;\u2705 \u09a8\u09bf\u09b0\u09be\u09aa\u09a6 \u098f\u09b2\u09be\u0995\u09be: \u09ac\u09c7\u0997\u09ae\u09aa\u09c7\u099f&quot;, &quot;mr&quot;: &quot;\u2705 \u0938\u0941\u0930\u0915\u094d\u0937\u093f\u0924 \u0915\u094d\u0937\u0947\u0924\u094d\u0930: \u092c\u0947\u0917\u092e\u092a\u0947\u091f&quot;, &quot;gu&quot;: &quot;\u2705 \u0ab8\u0ab2\u0abe\u0aae\u0aa4 \u0ab5\u0abf\u0ab8\u0acd\u0aa4\u0abe\u0ab0: \u0aac\u0ac7\u0a97\u0aae\u0aaa\u0ac7\u0a9f&quot;, &quot;pa&quot;: &quot;\u2705 \u0a38\u0a41\u0a30\u0a71\u0a16\u0a3f\u0a05\u0a24 \u0a16\u0a47\u0a24\u0a30: \u0a2c\u0a47\u0a17\u0a2e\u0a2a\u0a47\u0a1f&quot;, &quot;ur&quot;: &quot;\u2705 \u0645\u062d\u0641\u0648\u0638 \u0639\u0644\u0627\u0642\u06c1: \u0628\u06cc\u06af\u0645 \u067e\u06cc\u0679&quot;, &quot;as&quot;: &quot;\u2705 \u09a8\u09bf\u09f0\u09be\u09aa\u09a6 \u09b8\u09cd\u09a5\u09be\u09a8: \u09ac\u09c7\u0997\u09c1\u09ae\u09cd\u09aa\u09c7\u099f&quot;, &quot;or&quot;: &quot;\u2705 \u0b28\u0b3f\u0b30\u0b3e\u0b2a\u0b26 \u0b15\u0b4d\u0b37\u0b47\u0b24\u0b4d\u0b30: \u0b2c\u0b47\u0b17\u0b2e\u0b4d\u0b2a\u0b47\u0b1f\u0b4d |&quot;}">✅ Safe Area: Begumpet</div></div>`)[0];
+                popup_6fb87eb149f0b248209c537fcb0902e3.setContent(html_11b18b80caa1906c411a253bdae3026a);
+            
+        
+
+        circle_marker_fc51ac9729b22484e5540b1b8b9609e7.bindPopup(popup_6fb87eb149f0b248209c537fcb0902e3)
+        ;
+
+        
+    
+    
+            var circle_marker_6f9cec1cd30868a1f6be87df28a852a3 = L.circleMarker(
+                [17.4474, 78.5266],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 40, "stroke": true, "weight": 3}
+            ).addTo(map_3cacc60d530523bc82721f5b908bffd6);
+        
+    
+        var popup_755fa91d99e86705971ffb1b51b5a9b3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_901fb45e23d540296a500024cf93beb7 = $(`<div id="html_901fb45e23d540296a500024cf93beb7" style="width: 100.0%; height: 100.0%;"><div data-translate="{&quot;en&quot;: &quot;\u2705 Safe Area: Malkajgiri&quot;, &quot;hi&quot;: &quot;\u2705 \u0938\u0941\u0930\u0915\u094d\u0937\u093f\u0924 \u0915\u094d\u0937\u0947\u0924\u094d\u0930: \u092e\u0932\u094d\u0915\u093e\u091c\u0917\u093f\u0930\u0940&quot;, &quot;ta&quot;: &quot;\u2705 \u0baa\u0bbe\u0ba4\u0bc1\u0b95\u0bbe\u0baa\u0bcd\u0baa\u0bbe\u0ba9 \u0baa\u0b95\u0bc1\u0ba4\u0bbf: \u0bae\u0bb2\u0bcd\u0b95\u0bbe\u0b9c\u0bcd\u0b95\u0bbf\u0bb0\u0bbf&quot;, &quot;te&quot;: &quot;\u2705 \u0c38\u0c41\u0c30\u0c15\u0c4d\u0c37\u0c3f\u0c24 \u0c2a\u0c4d\u0c30\u0c3e\u0c02\u0c24\u0c02: \u0c2e\u0c32\u0c4d\u0c15\u0c3e\u0c1c\u0c3f\u0c17\u0c3f\u0c30\u0c3f&quot;, &quot;kn&quot;: &quot;\u2705 \u0cb8\u0cc1\u0cb0\u0c95\u0ccd\u0cb7\u0cbf\u0ca4 \u0caa\u0ccd\u0cb0\u0ca6\u0cc7\u0cb6: \u0cae\u0cb2\u0ccd\u0c95\u0cbe\u0c9c\u0ccd\u0c97\u0cbf\u0cb0\u0cbf&quot;, &quot;ml&quot;: &quot;\u2705 \u0d38\u0d41\u0d30\u0d15\u0d4d\u0d37\u0d3f\u0d24 \u0d2e\u0d47\u0d16\u0d32: \u0d2e\u0d7d\u0d15\u0d3e\u0d1c\u0d4d\u0d17\u0d3f\u0d30\u0d3f&quot;, &quot;bn&quot;: &quot;\u2705 \u09a8\u09bf\u09b0\u09be\u09aa\u09a6 \u098f\u09b2\u09be\u0995\u09be: \u09ae\u09be\u09b2\u0995\u09be\u099c\u0997\u09bf\u09b0\u09bf&quot;, &quot;mr&quot;: &quot;\u2705 \u0938\u0941\u0930\u0915\u094d\u0937\u093f\u0924 \u0915\u094d\u0937\u0947\u0924\u094d\u0930: \u092e\u0932\u0915\u093e\u091c\u0917\u093f\u0930\u0940&quot;, &quot;gu&quot;: &quot;\u2705 \u0ab8\u0ab2\u0abe\u0aae\u0aa4 \u0ab5\u0abf\u0ab8\u0acd\u0aa4\u0abe\u0ab0: \u0aae\u0ab2\u0a95\u0a9c\u0a97\u0ac0\u0ab0\u0ac0&quot;, &quot;pa&quot;: &quot;\u2705 \u0a38\u0a41\u0a30\u0a71\u0a16\u0a3f\u0a05\u0a24 \u0a16\u0a47\u0a24\u0a30: \u0a2e\u0a32\u0a15\u0a3e\u0a1c\u0a17\u0a3f\u0a30\u0a40&quot;, &quot;ur&quot;: &quot;\u2705 \u0645\u062d\u0641\u0648\u0638 \u0639\u0644\u0627\u0642\u06c1: \u0645\u0644\u06a9\u0627\u062c\u06af\u06cc\u0631\u06cc\u06d4&quot;, &quot;as&quot;: &quot;\u2705 \u09a8\u09bf\u09f0\u09be\u09aa\u09a6 \u098f\u09b2\u09c7\u0995\u09be\u0983 \u09ae\u09be\u09b2\u0995\u099c\u0997\u09bf\u09f0\u09bf&quot;, &quot;or&quot;: &quot;Fe \u0b28\u0b3f\u0b30\u0b3e\u0b2a\u0b26 \u0b15\u0b4d\u0b37\u0b47\u0b24\u0b4d\u0b30: \u0b2e\u0b3e\u0b32\u0b15\u0b3e\u0b1c\u0b3f\u0b17\u0b3f\u0b30\u0b3f |&quot;}">✅ Safe Area: Malkajgiri</div></div>`)[0];
+                popup_755fa91d99e86705971ffb1b51b5a9b3.setContent(html_901fb45e23d540296a500024cf93beb7);
+            
+        
+
+        circle_marker_6f9cec1cd30868a1f6be87df28a852a3.bindPopup(popup_755fa91d99e86705971ffb1b51b5a9b3)
+        ;
+
+        
+    
+    
+            var circle_marker_f4b89d1cc0a48454121515358eaeb1ef = L.circleMarker(
+                [17.4483, 78.3915],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 50, "stroke": true, "weight": 3}
+            ).addTo(map_3cacc60d530523bc82721f5b908bffd6);
+        
+    
+        var popup_43e65b8ec154e3f2f396ef2a40e88549 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_56686760a81dbdd9e55e997ff4ef7053 = $(`<div id="html_56686760a81dbdd9e55e997ff4ef7053" style="width: 100.0%; height: 100.0%;"><div data-translate="{&quot;en&quot;: &quot;\ud83d\udd25 Heatwave: Madhapur<br>Severity: Medium<br>Temp: 37.7\u00b0C&quot;, &quot;hi&quot;: &quot;\ud83d\udd25 \u0932\u0942: \u092e\u093e\u0927\u093e\u092a\u0941\u0930<br>\u0924\u0940\u0935\u094d\u0930\u0924\u093e: \u092e\u0927\u094d\u092f\u092e<br>\u0924\u093e\u092a\u092e\u093e\u0928: 37.7\u00b0C&quot;, &quot;ta&quot;: &quot;\ud83d\udd25 \u0bb5\u0bc6\u0baa\u0bcd\u0baa \u0b85\u0bb2\u0bc8: \u0bae\u0bbe\u0ba4\u0baa\u0bcd\u0baa\u0bc2\u0bb0\u0bcd<br>\u0b95\u0b9f\u0bc1\u0bae\u0bc8: \u0ba8\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb0<br>\u0bb5\u0bc6\u0baa\u0bcd\u0baa\u0ba8\u0bbf\u0bb2\u0bc8: 37.7\u00b0C&quot;, &quot;te&quot;: &quot;\ud83d\udd25 \u0c35\u0c47\u0c21\u0c3f\u0c17\u0c3e\u0c32\u0c41\u0c32\u0c41: \u0c2e\u0c3e\u0c26\u0c3e\u0c2a\u0c42\u0c30\u0c4d<br>\u0c24\u0c40\u0c35\u0c4d\u0c30\u0c24: \u0c2e\u0c27\u0c4d\u0c2f\u0c38\u0c4d\u0c25\u0c02<br>\u0c09\u0c37\u0c4d\u0c23\u0c4b\u0c17\u0c4d\u0c30\u0c24: 37.7\u00b0C&quot;, &quot;kn&quot;: &quot;\ud83d\udd25 \u0cb6\u0cbe\u0c96\u0ca6 \u0c85\u0cb2\u0cc6: \u0cae\u0cbe\u0ca6\u0cbe\u0caa\u0cc1\u0cb0<br>\u0ca4\u0cc0\u0cb5\u0ccd\u0cb0\u0ca4\u0cc6: \u0cae\u0ca7\u0ccd\u0caf\u0cae<br>\u0ca4\u0cbe\u0caa: 37.7\u00b0C&quot;, &quot;ml&quot;: &quot;\ud83d\udd25 \u0d09\u0d37\u0d4d\u0d23\u0d24\u0d30\u0d02\u0d17\u0d02: \u0d2e\u0d26\u0d3e\u0d2a\u0d42\u0d7c<br>\u0d24\u0d40\u0d35\u0d4d\u0d30\u0d24: \u0d07\u0d1f\u0d24\u0d4d\u0d24\u0d30\u0d02<br>\u0d24\u0d3e\u0d2a\u0d28\u0d3f\u0d32: 37.7\u00b0C&quot;, &quot;bn&quot;: &quot;\ud83d\udd25 \u09a4\u09be\u09aa\u09aa\u09cd\u09b0\u09ac\u09be\u09b9: \u09ae\u09be\u09a7\u09aa\u09c1\u09b0<br>\u09a4\u09c0\u09ac\u09cd\u09b0\u09a4\u09be: \u09ae\u09be\u099d\u09be\u09b0\u09bf<br>\u09a4\u09be\u09aa: 37.7 \u09a1\u09bf\u0997\u09cd\u09b0\u09bf \u09b8\u09c7\u09b2\u09b8\u09bf\u09af\u09bc\u09be\u09b8&quot;, &quot;mr&quot;: &quot;\ud83d\udd25 \u0909\u0937\u094d\u0923\u0924\u0947\u091a\u0940 \u0932\u093e\u091f: \u092e\u093e\u0927\u093e\u092a\u0942\u0930<br>\u0924\u0940\u0935\u094d\u0930\u0924\u093e: \u092e\u0927\u094d\u092f\u092e<br>\u0924\u093e\u092a\u092e\u093e\u0928: 37.7\u00b0C&quot;, &quot;gu&quot;: &quot;\ud83d\udd25 \u0ab9\u0ac0\u0a9f\u0ab5\u0ac7\u0ab5: \u0aae\u0abe\u0aa7\u0abe\u0aaa\u0ac1\u0ab0<br>\u0aa4\u0ac0\u0ab5\u0acd\u0ab0\u0aa4\u0abe: \u0aae\u0aa7\u0acd\u0aaf\u0aae<br>\u0aa4\u0abe\u0aaa\u0aae\u0abe\u0aa8: 37.7\u00b0C&quot;, &quot;pa&quot;: &quot;\ud83d\udd25 \u0a39\u0a40\u0a1f\u0a35\u0a47\u0a35: \u0a2e\u0a3e\u0a27\u0a3e\u0a2a\u0a41\u0a30<br>\u0a24\u0a40\u0a2c\u0a30\u0a24\u0a3e: \u0a2e\u0a71\u0a27\u0a2e<br>\u0a24\u0a3e\u0a2a\u0a2e\u0a3e\u0a28: 37.7\u00b0C&quot;, &quot;ur&quot;: &quot;\ud83d\udd25 \u06c1\u06cc\u0679 \u0648\u06cc\u0648: \u0645\u0627\u062f\u06be\u0627 \u067e\u0648\u0631<br>\u0634\u062f\u062a: \u062f\u0631\u0645\u06cc\u0627\u0646\u06c1<br>\u062f\u0631\u062c\u06c1 \u062d\u0631\u0627\u0631\u062a: 37.7\u00b0C&quot;, &quot;as&quot;: &quot;\ud83d\udd25 \u0997\u09f0\u09ae\u09f0 \u09a2\u09cc: \u09ae\u09be\u09a7\u09be\u09aa\u09c1\u09f0<br>\u0997\u09c1\u09f0\u09c1\u09a4\u09cd\u09ac: \u09ae\u09a7\u09cd\u09af\u09ae\u09c0\u09af\u09bc\u09be<br>\u0989\u09b7\u09cd\u09a3\u09a4\u09be: \u09e9\u09ed.\u09ed \u09a1\u09bf\u0997\u09cd\u09f0\u09c0 \u099a\u09c7\u09b2\u099b\u09bf\u09af\u09bc\u09be\u099b&quot;, &quot;or&quot;: &quot;\ud83d\udd25 \u0b39\u0b3f\u0b1f\u0b4d\u0b71\u0b47\u0b2d\u0b4d: \u0b2e\u0b3e\u0b27\u0b2a\u0b41\u0b30 <br> \u0b17\u0b2e\u0b4d\u0b2d\u0b40\u0b30\u0b24\u0b3e: \u0b2e\u0b27\u0b4d\u0b5f\u0b2e <br> \u0b1f\u0b47\u0b2e\u0b4d\u0b2a: 37.7 \u00b0 C&quot;}">🔥 Heatwave: Madhapur<br>Severity: Medium<br>Temp: 37.7°C</div></div>`)[0];
+                popup_43e65b8ec154e3f2f396ef2a40e88549.setContent(html_56686760a81dbdd9e55e997ff4ef7053);
+            
+        
+
+        circle_marker_f4b89d1cc0a48454121515358eaeb1ef.bindPopup(popup_43e65b8ec154e3f2f396ef2a40e88549)
+        ;
+
+        
+    
+    
+            var circle_marker_b9bda6a0d9d8d60e63aae62c682c0c09 = L.circleMarker(
+                [17.4126, 78.4482],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 50, "stroke": true, "weight": 3}
+            ).addTo(map_3cacc60d530523bc82721f5b908bffd6);
+        
+    
+        var popup_874f4ad22253dbd801fc16e4b4994bce = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8c80164b988f34d24f2e98be6d93395d = $(`<div id="html_8c80164b988f34d24f2e98be6d93395d" style="width: 100.0%; height: 100.0%;"><div data-translate="{&quot;en&quot;: &quot;\ud83d\udd25 Heatwave: Banjara Hills<br>Severity: Medium<br>Temp: 37.2\u00b0C&quot;, &quot;hi&quot;: &quot;\ud83d\udd25 \u0939\u0940\u091f\u0935\u0947\u0935: \u092c\u0902\u091c\u093e\u0930\u093e \u0939\u093f\u0932\u094d\u0938<br>\u0924\u0940\u0935\u094d\u0930\u0924\u093e: \u092e\u0927\u094d\u092f\u092e<br>\u0924\u093e\u092a\u092e\u093e\u0928: 37.2\u00b0C&quot;, &quot;ta&quot;: &quot;\ud83d\udd25 \u0bb5\u0bc6\u0baa\u0bcd\u0baa \u0b85\u0bb2\u0bc8: \u0baa\u0b9e\u0bcd\u0b9a\u0bbe\u0bb0\u0bbe \u0bb9\u0bbf\u0bb2\u0bcd\u0bb8\u0bcd<br>\u0b95\u0b9f\u0bc1\u0bae\u0bc8: \u0ba8\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb0<br>\u0bb5\u0bc6\u0baa\u0bcd\u0baa\u0ba8\u0bbf\u0bb2\u0bc8: 37.2\u00b0C&quot;, &quot;te&quot;: &quot;\ud83d\udd25 \u0c35\u0c47\u0c21\u0c3f\u0c17\u0c3e\u0c32\u0c41\u0c32\u0c41: \u0c2c\u0c02\u0c1c\u0c3e\u0c30\u0c3e \u0c39\u0c3f\u0c32\u0c4d\u0c38\u0c4d<br>\u0c24\u0c40\u0c35\u0c4d\u0c30\u0c24: \u0c2e\u0c27\u0c4d\u0c2f\u0c38\u0c4d\u0c25\u0c02<br>\u0c09\u0c37\u0c4d\u0c23\u0c4b\u0c17\u0c4d\u0c30\u0c24: 37.2\u00b0C&quot;, &quot;kn&quot;: &quot;\ud83d\udd25 \u0cb6\u0cbe\u0c96\u0ca6 \u0c85\u0cb2\u0cc6: \u0cac\u0c82\u0c9c\u0cbe\u0cb0\u0cbe \u0cb9\u0cbf\u0cb2\u0ccd\u0cb8\u0ccd<br>\u0ca4\u0cc0\u0cb5\u0ccd\u0cb0\u0ca4\u0cc6: \u0cae\u0ca7\u0ccd\u0caf\u0cae<br>\u0ca4\u0cbe\u0caa\u0cae\u0cbe\u0ca8: 37.2\u00b0C&quot;, &quot;ml&quot;: &quot;\ud83d\udd25 \u0d09\u0d37\u0d4d\u0d23\u0d24\u0d30\u0d02\u0d17\u0d02: \u0d2c\u0d1e\u0d4d\u0d1a\u0d3e\u0d30 \u0d39\u0d3f\u0d7d\u0d38\u0d4d<br>\u0d24\u0d40\u0d35\u0d4d\u0d30\u0d24: \u0d07\u0d1f\u0d24\u0d4d\u0d24\u0d30\u0d02<br>\u0d24\u0d3e\u0d2a\u0d28\u0d3f\u0d32: 37.2\u00b0C&quot;, &quot;bn&quot;: &quot;\ud83d\udd25 \u09a4\u09be\u09aa\u09aa\u09cd\u09b0\u09ac\u09be\u09b9: \u09ac\u09be\u09a8\u099c\u09be\u09b0\u09be \u09aa\u09be\u09b9\u09be\u09a1\u09bc<br>\u09a4\u09c0\u09ac\u09cd\u09b0\u09a4\u09be: \u09ae\u09be\u099d\u09be\u09b0\u09bf<br>\u09a4\u09be\u09aa: 37.2\u00b0C&quot;, &quot;mr&quot;: &quot;\ud83d\udd25 \u0909\u0937\u094d\u0923\u0924\u0947\u091a\u0940 \u0932\u093e\u091f: \u092c\u0902\u091c\u093e\u0930\u093e \u0939\u093f\u0932\u094d\u0938<br>\u0924\u0940\u0935\u094d\u0930\u0924\u093e: \u092e\u0927\u094d\u092f\u092e<br>\u0924\u093e\u092a\u092e\u093e\u0928: 37.2\u00b0C&quot;, &quot;gu&quot;: &quot;\ud83d\udd25 \u0ab9\u0ac0\u0a9f\u0ab5\u0ac7\u0ab5: \u0aac\u0a82\u0a9c\u0abe\u0ab0\u0abe \u0ab9\u0abf\u0ab2\u0acd\u0ab8<br>\u0aa4\u0ac0\u0ab5\u0acd\u0ab0\u0aa4\u0abe: \u0aae\u0aa7\u0acd\u0aaf\u0aae<br>\u0aa4\u0abe\u0aaa\u0aae\u0abe\u0aa8: 37.2\u00b0C&quot;, &quot;pa&quot;: &quot;\ud83d\udd25 \u0a39\u0a40\u0a1f\u0a35\u0a47\u0a35: \u0a2c\u0a70\u0a1c\u0a3e\u0a30\u0a3e \u0a2a\u0a39\u0a3e\u0a5c\u0a40\u0a06\u0a02<br>\u0a24\u0a40\u0a2c\u0a30\u0a24\u0a3e: \u0a2e\u0a71\u0a27\u0a2e<br>\u0a24\u0a3e\u0a2a\u0a2e\u0a3e\u0a28: 37.2\u00b0C&quot;, &quot;ur&quot;: &quot;\ud83d\udd25 \u06c1\u06cc\u0679 \u0648\u06cc\u0648: \u0628\u0646\u062c\u0627\u0631\u06c1 \u06c1\u0644\u0632<br>\u0634\u062f\u062a: \u062f\u0631\u0645\u06cc\u0627\u0646\u06c1<br>\u062f\u0631\u062c\u06c1 \u062d\u0631\u0627\u0631\u062a: 37.2\u00b0C&quot;, &quot;as&quot;: &quot;\ud83d\udd25 \u0997\u09f0\u09ae\u09f0 \u09a2\u09cc: \u09ac\u099e\u09cd\u099c\u09f0\u09be \u09aa\u09be\u09b9\u09be\u09f0<br>\u0997\u09c1\u09f0\u09c1\u09a4\u09cd\u09ac: \u09ae\u09a7\u09cd\u09af\u09ae<br>\u0989\u09b7\u09cd\u09a3\u09a4\u09be: \u09e9\u09ed.\u09e8 \u09a1\u09bf\u0997\u09cd\u09f0\u09c0 \u099a\u09c7\u09b2\u099b\u09bf\u09af\u09bc\u09be\u099b&quot;, &quot;or&quot;: &quot;\ud83d\udd25 \u0b39\u0b3f\u0b1f\u0b4d\u0b71\u0b47\u0b2d\u0b4d: \u0b2c\u0b28\u0b1c\u0b3e\u0b30\u0b3e \u0b2a\u0b3e\u0b39\u0b3e\u0b21\u0b17\u0b41\u0b21\u0b3f\u0b15 <br> \u0b17\u0b2e\u0b4d\u0b2d\u0b40\u0b30\u0b24\u0b3e: \u0b2e\u0b27\u0b4d\u0b5f\u0b2e <br> \u0b1f\u0b47\u0b2e\u0b4d\u0b2a: 37.2 \u00b0 C&quot;}">🔥 Heatwave: Banjara Hills<br>Severity: Medium<br>Temp: 37.2°C</div></div>`)[0];
+                popup_874f4ad22253dbd801fc16e4b4994bce.setContent(html_8c80164b988f34d24f2e98be6d93395d);
+            
+        
+
+        circle_marker_b9bda6a0d9d8d60e63aae62c682c0c09.bindPopup(popup_874f4ad22253dbd801fc16e4b4994bce)
+        ;
+
+        
+    
+    
+            var circle_marker_d52912d8554f267e344a6cc86f61d319 = L.circleMarker(
+                [17.4239, 78.4738],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 50, "stroke": true, "weight": 3}
+            ).addTo(map_3cacc60d530523bc82721f5b908bffd6);
+        
+    
+        var popup_195f53cc3a279d8fa1f01744f5921b0e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_61a29b6cb67e0aaff13c344a88448679 = $(`<div id="html_61a29b6cb67e0aaff13c344a88448679" style="width: 100.0%; height: 100.0%;"><div data-translate="{&quot;en&quot;: &quot;\ud83d\udd25 Heatwave: Jubilee Hills<br>Severity: Medium<br>Temp: 37.5\u00b0C&quot;, &quot;hi&quot;: &quot;\ud83d\udd25 \u0939\u0940\u091f\u0935\u0947\u0935: \u091c\u0941\u092c\u0932\u0940 \u0939\u093f\u0932\u094d\u0938<br>\u0924\u0940\u0935\u094d\u0930\u0924\u093e: \u092e\u0927\u094d\u092f\u092e<br>\u0924\u093e\u092a\u092e\u093e\u0928: 37.5\u00b0C&quot;, &quot;ta&quot;: &quot;\ud83d\udd25 \u0bb5\u0bc6\u0baa\u0bcd\u0baa \u0b85\u0bb2\u0bc8: \u0b9c\u0bc2\u0baa\u0bbf\u0bb2\u0bbf \u0bb9\u0bbf\u0bb2\u0bcd\u0bb8\u0bcd<br>\u0b95\u0b9f\u0bc1\u0bae\u0bc8: \u0ba8\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb0<br>\u0bb5\u0bc6\u0baa\u0bcd\u0baa\u0ba8\u0bbf\u0bb2\u0bc8: 37.5\u00b0C&quot;, &quot;te&quot;: &quot;\ud83d\udd25 \u0c35\u0c47\u0c21\u0c3f\u0c17\u0c3e\u0c32\u0c41\u0c32\u0c41: \u0c1c\u0c42\u0c2c\u0c4d\u0c32\u0c40 \u0c39\u0c3f\u0c32\u0c4d\u0c38\u0c4d<br>\u0c24\u0c40\u0c35\u0c4d\u0c30\u0c24: \u0c2e\u0c27\u0c4d\u0c2f\u0c38\u0c4d\u0c25\u0c02<br>\u0c09\u0c37\u0c4d\u0c23\u0c4b\u0c17\u0c4d\u0c30\u0c24: 37.5\u00b0C&quot;, &quot;kn&quot;: &quot;\ud83d\udd25 \u0cb6\u0cbe\u0c96\u0ca6 \u0c85\u0cb2\u0cc6: \u0c9c\u0cc1\u0cac\u0cbf\u0cb2\u0cbf \u0cb9\u0cbf\u0cb2\u0ccd\u0cb8\u0ccd<br>\u0ca4\u0cc0\u0cb5\u0ccd\u0cb0\u0ca4\u0cc6: \u0cae\u0ca7\u0ccd\u0caf\u0cae<br>\u0ca4\u0cbe\u0caa: 37.5\u00b0C&quot;, &quot;ml&quot;: &quot;\ud83d\udd25 \u0d09\u0d37\u0d4d\u0d23\u0d24\u0d30\u0d02\u0d17\u0d02: \u0d1c\u0d42\u0d2c\u0d3f\u0d32\u0d3f \u0d39\u0d3f\u0d7d\u0d38\u0d4d<br>\u0d24\u0d40\u0d35\u0d4d\u0d30\u0d24: \u0d07\u0d1f\u0d24\u0d4d\u0d24\u0d30\u0d02<br>\u0d24\u0d3e\u0d2a\u0d28\u0d3f\u0d32: 37.5\u00b0C&quot;, &quot;bn&quot;: &quot;\ud83d\udd25 \u09a4\u09be\u09aa\u09aa\u09cd\u09b0\u09ac\u09be\u09b9: \u099c\u09c1\u09ac\u09bf\u09b2\u09bf \u09b9\u09bf\u09b2\u09b8<br>\u09a4\u09c0\u09ac\u09cd\u09b0\u09a4\u09be: \u09ae\u09be\u099d\u09be\u09b0\u09bf<br>\u09a4\u09be\u09aa: 37.5\u00b0C&quot;, &quot;mr&quot;: &quot;\ud83d\udd25 \u0909\u0937\u094d\u0923\u0924\u0947\u091a\u0940 \u0932\u093e\u091f: \u091c\u0941\u092c\u0932\u0940 \u0939\u093f\u0932\u094d\u0938<br>\u0924\u0940\u0935\u094d\u0930\u0924\u093e: \u092e\u0927\u094d\u092f\u092e<br>\u0924\u093e\u092a\u092e\u093e\u0928: 37.5\u00b0C&quot;, &quot;gu&quot;: &quot;\ud83d\udd25 \u0ab9\u0ac0\u0a9f\u0ab5\u0ac7\u0ab5: \u0a9c\u0acd\u0aaf\u0ac1\u0aac\u0abf\u0ab2\u0ac0 \u0ab9\u0abf\u0ab2\u0acd\u0ab8<br>\u0aa4\u0ac0\u0ab5\u0acd\u0ab0\u0aa4\u0abe: \u0aae\u0aa7\u0acd\u0aaf\u0aae<br>\u0aa4\u0abe\u0aaa\u0aae\u0abe\u0aa8: 37.5\u00b0C&quot;, &quot;pa&quot;: &quot;\ud83d\udd25 \u0a39\u0a40\u0a1f\u0a35\u0a47\u0a35: \u0a1c\u0a41\u0a2c\u0a32\u0a40 \u0a39\u0a3f\u0a32\u0a38<br>\u0a24\u0a40\u0a2c\u0a30\u0a24\u0a3e: \u0a2e\u0a71\u0a27\u0a2e<br>\u0a24\u0a3e\u0a2a\u0a2e\u0a3e\u0a28: 37.5\u00b0C&quot;, &quot;ur&quot;: &quot;\ud83d\udd25 \u06c1\u06cc\u0679 \u0648\u06cc\u0648: \u062c\u0648\u0628\u0644\u06cc \u06c1\u0644\u0632<br>\u0634\u062f\u062a: \u062f\u0631\u0645\u06cc\u0627\u0646\u06c1<br>\u062f\u0631\u062c\u06c1 \u062d\u0631\u0627\u0631\u062a: 37.5\u00b0C&quot;, &quot;as&quot;: &quot;\ud83d\udd25 \u0997\u09f0\u09ae\u09f0 \u09a2\u09cc: \u099c\u09c1\u09ac\u09bf\u09b2\u09c0 \u09aa\u09be\u09b9\u09be\u09f0<br>\u0997\u09c1\u09f0\u09c1\u09a4\u09cd\u09ac: \u09ae\u09a7\u09cd\u09af\u09ae\u09c0\u09af\u09bc\u09be<br>\u0989\u09b7\u09cd\u09a3\u09a4\u09be: \u09e9\u09ed.\u09eb \u09a1\u09bf\u0997\u09cd\u09f0\u09c0 \u099a\u09c7\u09b2\u099b\u09bf\u09af\u09bc\u09be\u099b&quot;, &quot;or&quot;: &quot;\ud83d\udd25 \u0b39\u0b3f\u0b1f\u0b4d\u0b71\u0b47\u0b2d\u0b4d: \u0b1c\u0b41\u0b2c\u0b41\u0b32\u0b3f \u0b2a\u0b3e\u0b39\u0b3e\u0b21\u0b17\u0b41\u0b21\u0b3f\u0b15 <br> \u0b17\u0b2e\u0b4d\u0b2d\u0b40\u0b30\u0b24\u0b3e: \u0b2e\u0b27\u0b4d\u0b5f\u0b2e <br> \u0b1f\u0b47\u0b2e\u0b4d\u0b2a: 37.5 \u00b0 C&quot;}">🔥 Heatwave: Jubilee Hills<br>Severity: Medium<br>Temp: 37.5°C</div></div>`)[0];
+                popup_195f53cc3a279d8fa1f01744f5921b0e.setContent(html_61a29b6cb67e0aaff13c344a88448679);
+            
+        
+
+        circle_marker_d52912d8554f267e344a6cc86f61d319.bindPopup(popup_195f53cc3a279d8fa1f01744f5921b0e)
+        ;
+
+        
+    
+    
+            var circle_marker_bdb064136966541abdbe05d5fcf30cd6 = L.circleMarker(
+                [17.3924, 78.4395],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 50, "stroke": true, "weight": 3}
+            ).addTo(map_3cacc60d530523bc82721f5b908bffd6);
+        
+    
+        var popup_a9836f535d7699c29041b03c208fc203 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bf5eed3f94b15a796cdd5f326b1c5a09 = $(`<div id="html_bf5eed3f94b15a796cdd5f326b1c5a09" style="width: 100.0%; height: 100.0%;"><div data-translate="{&quot;en&quot;: &quot;\ud83d\udd25 Heatwave: Mehdipatnam<br>Severity: Medium<br>Temp: 37.4\u00b0C&quot;, &quot;hi&quot;: &quot;\ud83d\udd25 \u0939\u0940\u091f\u0935\u0947\u0935: \u092e\u0947\u0939\u0926\u0940\u092a\u091f\u094d\u091f\u0928\u092e<br>\u0924\u0940\u0935\u094d\u0930\u0924\u093e: \u092e\u0927\u094d\u092f\u092e<br>\u0924\u093e\u092a\u092e\u093e\u0928: 37.4\u00b0C&quot;, &quot;ta&quot;: &quot;\ud83d\udd25 \u0bb5\u0bc6\u0baa\u0bcd\u0baa \u0b85\u0bb2\u0bc8: \u0bae\u0bc6\u0bb9\u0bcd\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bbf\u0ba9\u0bae\u0bcd<br>\u0b95\u0b9f\u0bc1\u0bae\u0bc8: \u0ba8\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb0<br>\u0bb5\u0bc6\u0baa\u0bcd\u0baa\u0ba8\u0bbf\u0bb2\u0bc8: 37.4\u00b0C&quot;, &quot;te&quot;: &quot;\ud83d\udd25 \u0c35\u0c47\u0c21\u0c3f\u0c17\u0c3e\u0c32\u0c41\u0c32\u0c41: \u0c2e\u0c46\u0c39\u0c26\u0c40\u0c2a\u0c1f\u0c4d\u0c28\u0c02<br>\u0c24\u0c40\u0c35\u0c4d\u0c30\u0c24: \u0c2e\u0c27\u0c4d\u0c2f\u0c38\u0c4d\u0c25\u0c02<br>\u0c09\u0c37\u0c4d\u0c23\u0c4b\u0c17\u0c4d\u0c30\u0c24: 37.4\u00b0C&quot;, &quot;kn&quot;: &quot;\ud83d\udd25 \u0cb6\u0cbe\u0c96\u0ca6 \u0c85\u0cb2\u0cc6: \u0cae\u0cc6\u0cb9\u0ca6\u0cbf\u0caa\u0c9f\u0ccd\u0c9f\u0ca3\u0c82<br>\u0ca4\u0cc0\u0cb5\u0ccd\u0cb0\u0ca4\u0cc6: \u0cae\u0ca7\u0ccd\u0caf\u0cae<br>\u0ca4\u0cbe\u0caa: 37.4\u00b0C&quot;, &quot;ml&quot;: &quot;\ud83d\udd25 \u0d09\u0d37\u0d4d\u0d23\u0d24\u0d30\u0d02\u0d17\u0d02: \u0d2e\u0d46\u0d39\u0d4d\u0d26\u0d3f\u0d2a\u0d1f\u0d4d\u0d1f\u0d23\u0d02<br>\u0d24\u0d40\u0d35\u0d4d\u0d30\u0d24: \u0d07\u0d1f\u0d24\u0d4d\u0d24\u0d30\u0d02<br>\u0d24\u0d3e\u0d2a\u0d28\u0d3f\u0d32: 37.4\u00b0C&quot;, &quot;bn&quot;: &quot;\ud83d\udd25 \u09a4\u09be\u09aa\u09aa\u09cd\u09b0\u09ac\u09be\u09b9: \u09ae\u09c7\u09b9\u09c7\u09a6\u09bf\u09aa\u09a4\u09cd\u09a4\u09a8\u09ae<br>\u09a4\u09c0\u09ac\u09cd\u09b0\u09a4\u09be: \u09ae\u09be\u099d\u09be\u09b0\u09bf<br>\u09a4\u09be\u09aa: 37.4\u00b0C&quot;, &quot;mr&quot;: &quot;\ud83d\udd25 \u0909\u0937\u094d\u0923\u0924\u0947\u091a\u0940 \u0932\u093e\u091f: \u092e\u0947\u0939\u0926\u0940\u092a\u091f\u094d\u091f\u0923\u092e<br>\u0924\u0940\u0935\u094d\u0930\u0924\u093e: \u092e\u0927\u094d\u092f\u092e<br>\u0924\u093e\u092a\u092e\u093e\u0928: 37.4\u00b0C&quot;, &quot;gu&quot;: &quot;\ud83d\udd25 \u0ab9\u0ac0\u0a9f\u0ab5\u0ac7\u0ab5: \u0aae\u0ac7\u0ab9\u0aa6\u0ac0\u0aaa\u0a9f\u0aa8\u0aae<br>\u0aa4\u0ac0\u0ab5\u0acd\u0ab0\u0aa4\u0abe: \u0aae\u0aa7\u0acd\u0aaf\u0aae<br>\u0aa4\u0abe\u0aaa\u0aae\u0abe\u0aa8: 37.4\u00b0C&quot;, &quot;pa&quot;: &quot;\ud83d\udd25 \u0a39\u0a40\u0a1f\u0a35\u0a47\u0a35: \u0a2e\u0a47\u0a39\u0a26\u0a40\u0a2a\u0a1f\u0a28\u0a2e<br>\u0a24\u0a40\u0a2c\u0a30\u0a24\u0a3e: \u0a2e\u0a71\u0a27\u0a2e<br>\u0a24\u0a3e\u0a2a\u0a2e\u0a3e\u0a28: 37.4\u00b0C&quot;, &quot;ur&quot;: &quot;\ud83d\udd25 \u06c1\u06cc\u0679 \u0648\u06cc\u0648: \u0645\u06c1\u062f\u06cc \u067e\u0679\u0646\u0645<br>\u0634\u062f\u062a: \u062f\u0631\u0645\u06cc\u0627\u0646\u06c1<br>\u062f\u0631\u062c\u06c1 \u062d\u0631\u0627\u0631\u062a: 37.4\u00b0C&quot;, &quot;as&quot;: &quot;\ud83d\udd25 \u0997\u09f0\u09ae\u09f0 \u09a2\u09cc: \u09ae\u09c7\u09b9\u09a6\u09bf\u09aa\u099f\u09cd\u09a8\u09be\u09ae<br>\u0997\u09c1\u09f0\u09c1\u09a4\u09cd\u09ac: \u09ae\u09a7\u09cd\u09af\u09ae<br>\u0989\u09b7\u09cd\u09a3\u09a4\u09be: \u09e9\u09ed.\u09ea \u09a1\u09bf\u0997\u09cd\u09f0\u09c0 \u099a\u09c7\u09b2\u099b\u09bf\u09af\u09bc\u09be\u099b&quot;, &quot;or&quot;: &quot;\ud83d\udd25 \u0b39\u0b3f\u0b1f\u0b4d\u0b71\u0b47\u0b2d\u0b4d: \u0b2e\u0b47\u0b39\u0b47\u0b26\u0b3f\u0b2a\u0b3e\u0b1f\u0b28\u0b2e\u0b4d <br> \u0b17\u0b2e\u0b4d\u0b2d\u0b40\u0b30\u0b24\u0b3e: \u0b2e\u0b27\u0b4d\u0b5f\u0b2e <br> \u0b1f\u0b47\u0b2e\u0b4d\u0b2a: 37.4 \u00b0 C&quot;}">🔥 Heatwave: Mehdipatnam<br>Severity: Medium<br>Temp: 37.4°C</div></div>`)[0];
+                popup_a9836f535d7699c29041b03c208fc203.setContent(html_bf5eed3f94b15a796cdd5f326b1c5a09);
+            
+        
+
+        circle_marker_bdb064136966541abdbe05d5fcf30cd6.bindPopup(popup_a9836f535d7699c29041b03c208fc203)
+        ;
+
+        
+    
+    
+            var circle_marker_b1de54a252d3113a745977af861a0595 = L.circleMarker(
+                [17.3616, 78.4747],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 50, "stroke": true, "weight": 3}
+            ).addTo(map_3cacc60d530523bc82721f5b908bffd6);
+        
+    
+        var popup_d0683014818600eb683815e52cca8c00 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_741279ad451c7e9319e17d6ebe24087f = $(`<div id="html_741279ad451c7e9319e17d6ebe24087f" style="width: 100.0%; height: 100.0%;"><div data-translate="{&quot;en&quot;: &quot;\ud83d\udd25 Heatwave: Charminar<br>Severity: Medium<br>Temp: 37.6\u00b0C&quot;, &quot;hi&quot;: &quot;\ud83d\udd25 \u0939\u0940\u091f\u0935\u0947\u0935: \u091a\u093e\u0930\u092e\u0940\u0928\u093e\u0930<br>\u0917\u0902\u092d\u0940\u0930\u0924\u093e: \u092e\u0927\u094d\u092f\u092e<br>\u0924\u093e\u092a\u092e\u093e\u0928: 37.6\u00b0C&quot;, &quot;ta&quot;: &quot;\ud83d\udd25 \u0bb5\u0bc6\u0baa\u0bcd\u0baa \u0b85\u0bb2\u0bc8: \u0b9a\u0bbe\u0bb0\u0bcd\u0bae\u0bbf\u0ba9\u0bbe\u0bb0\u0bcd<br>\u0b95\u0b9f\u0bc1\u0bae\u0bc8: \u0ba8\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb0<br>\u0bb5\u0bc6\u0baa\u0bcd\u0baa\u0ba8\u0bbf\u0bb2\u0bc8: 37.6\u00b0C&quot;, &quot;te&quot;: &quot;\ud83d\udd25 \u0c35\u0c47\u0c21\u0c3f\u0c17\u0c3e\u0c32\u0c41\u0c32\u0c41: \u0c1a\u0c3e\u0c30\u0c4d\u0c2e\u0c3f\u0c28\u0c3e\u0c30\u0c4d<br>\u0c24\u0c40\u0c35\u0c4d\u0c30\u0c24: \u0c2e\u0c27\u0c4d\u0c2f\u0c38\u0c4d\u0c25\u0c02<br>\u0c09\u0c37\u0c4d\u0c23\u0c4b\u0c17\u0c4d\u0c30\u0c24: 37.6\u00b0C&quot;, &quot;kn&quot;: &quot;\ud83d\udd25 \u0cb6\u0cbe\u0c96\u0ca6 \u0c85\u0cb2\u0cc6: \u0c9a\u0cbe\u0cb0\u0ccd\u0cae\u0cbf\u0ca8\u0cbe\u0cb0\u0ccd<br>\u0ca4\u0cc0\u0cb5\u0ccd\u0cb0\u0ca4\u0cc6: \u0cae\u0ca7\u0ccd\u0caf\u0cae<br>\u0ca4\u0cbe\u0caa: 37.6\u00b0C&quot;, &quot;ml&quot;: &quot;\ud83d\udd25 \u0d09\u0d37\u0d4d\u0d23\u0d24\u0d30\u0d02\u0d17\u0d02: \u0d1a\u0d3e\u0d7c\u0d2e\u0d3f\u0d28\u0d3e\u0d7c<br>\u0d24\u0d40\u0d35\u0d4d\u0d30\u0d24: \u0d07\u0d1f\u0d24\u0d4d\u0d24\u0d30\u0d02<br>\u0d24\u0d3e\u0d2a\u0d28\u0d3f\u0d32: 37.6\u00b0C&quot;, &quot;bn&quot;: &quot;\ud83d\udd25 \u09a4\u09be\u09aa\u09aa\u09cd\u09b0\u09ac\u09be\u09b9: \u099a\u09be\u09b0\u09ae\u09bf\u09a8\u09be\u09b0<br>\u09a4\u09c0\u09ac\u09cd\u09b0\u09a4\u09be: \u09ae\u09be\u099d\u09be\u09b0\u09bf<br>\u09a4\u09be\u09aa: 37.6\u00b0C&quot;, &quot;mr&quot;: &quot;\ud83d\udd25 \u0909\u0937\u094d\u0923\u0924\u0947\u091a\u0940 \u0932\u093e\u091f: \u091a\u093e\u0930\u092e\u093f\u0928\u093e\u0930<br>\u0924\u0940\u0935\u094d\u0930\u0924\u093e: \u092e\u0927\u094d\u092f\u092e<br>\u0924\u093e\u092a\u092e\u093e\u0928: 37.6\u00b0C&quot;, &quot;gu&quot;: &quot;\ud83d\udd25 \u0ab9\u0ac0\u0a9f\u0ab5\u0ac7\u0ab5: \u0a9a\u0abe\u0ab0\u0aae\u0abf\u0aa8\u0abe\u0ab0<br>\u0aa4\u0ac0\u0ab5\u0acd\u0ab0\u0aa4\u0abe: \u0aae\u0aa7\u0acd\u0aaf\u0aae<br>\u0aa4\u0abe\u0aaa\u0aae\u0abe\u0aa8: 37.6\u00b0C&quot;, &quot;pa&quot;: &quot;\ud83d\udd25 \u0a39\u0a40\u0a1f\u0a35\u0a47\u0a35: \u0a1a\u0a3e\u0a30\u0a2e\u0a40\u0a28\u0a3e\u0a30<br>\u0a24\u0a40\u0a2c\u0a30\u0a24\u0a3e: \u0a2e\u0a71\u0a27\u0a2e<br>\u0a24\u0a3e\u0a2a\u0a2e\u0a3e\u0a28: 37.6\u00b0C&quot;, &quot;ur&quot;: &quot;\ud83d\udd25 \u06c1\u06cc\u0679 \u0648\u06cc\u0648: \u0686\u0627\u0631\u0645\u06cc\u0646\u0627\u0631<br>\u0634\u062f\u062a: \u062f\u0631\u0645\u06cc\u0627\u0646\u06c1<br>\u062f\u0631\u062c\u06c1 \u062d\u0631\u0627\u0631\u062a: 37.6\u00b0C&quot;, &quot;as&quot;: &quot;\ud83d\udd25 \u0997\u09f0\u09ae\u09f0 \u09a2\u09cc: \u099a\u09be\u09f0\u09cd\u09ae\u09bf\u09a8\u09be\u09f0<br>\u0997\u09c1\u09f0\u09c1\u09a4\u09cd\u09ac: \u09ae\u09a7\u09cd\u09af\u09ae\u09c0\u09af\u09bc\u09be<br>\u0989\u09b7\u09cd\u09a3\u09a4\u09be: \u09e9\u09ed.\u09ec \u09a1\u09bf\u0997\u09cd\u09f0\u09c0 \u099a\u09c7\u09b2\u099b\u09bf\u09af\u09bc\u09be\u099b&quot;, &quot;or&quot;: &quot;\ud83d\udd25 \u0b09\u0b24\u0b4d\u0b24\u0b3e\u0b2a \u0b24\u0b30\u0b19\u0b4d\u0b17: \u0b1a\u0b3e\u0b30\u0b4d\u0b2e\u0b3f\u0b28\u0b3e\u0b30\u0b4d <br> \u0b17\u0b2e\u0b4d\u0b2d\u0b40\u0b30\u0b24\u0b3e: \u0b2e\u0b27\u0b4d\u0b5f\u0b2e <br> \u0b1f\u0b47\u0b2e\u0b4d\u0b2a: 37.6 \u00b0 C |&quot;}">🔥 Heatwave: Charminar<br>Severity: Medium<br>Temp: 37.6°C</div></div>`)[0];
+                popup_d0683014818600eb683815e52cca8c00.setContent(html_741279ad451c7e9319e17d6ebe24087f);
+            
+        
+
+        circle_marker_b1de54a252d3113a745977af861a0595.bindPopup(popup_d0683014818600eb683815e52cca8c00)
+        ;
+
+        
+    
+    
+            var circle_marker_3b8a2093379d0d9154220af84fe78e79 = L.circleMarker(
+                [17.33, 78.4678],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 50, "stroke": true, "weight": 3}
+            ).addTo(map_3cacc60d530523bc82721f5b908bffd6);
+        
+    
+        var popup_c436b07ec76e26d2183202d6178ccd38 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_25e2aa0a4034acc31f712b2ea3e4d319 = $(`<div id="html_25e2aa0a4034acc31f712b2ea3e4d319" style="width: 100.0%; height: 100.0%;"><div data-translate="{&quot;en&quot;: &quot;\ud83d\udd25 Heatwave: Falaknuma<br>Severity: Medium<br>Temp: 37.1\u00b0C&quot;, &quot;hi&quot;: &quot;\ud83d\udd25 \u0932\u0942: \u092b\u0932\u0915\u0928\u0941\u092e\u093e<br>\u0924\u0940\u0935\u094d\u0930\u0924\u093e: \u092e\u0927\u094d\u092f\u092e<br>\u0924\u093e\u092a\u092e\u093e\u0928: 37.1\u00b0C&quot;, &quot;ta&quot;: &quot;\ud83d\udd25 \u0bb5\u0bc6\u0baa\u0bcd\u0baa \u0b85\u0bb2\u0bc8: \u0baa\u0bb2\u0b95\u0bcd\u0ba9\u0bc1\u0bae\u0bbe<br>\u0b95\u0b9f\u0bc1\u0bae\u0bc8: \u0ba8\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb0<br>\u0bb5\u0bc6\u0baa\u0bcd\u0baa\u0ba8\u0bbf\u0bb2\u0bc8: 37.1\u00b0C&quot;, &quot;te&quot;: &quot;\ud83d\udd25 \u0c35\u0c47\u0c21\u0c3f\u0c17\u0c3e\u0c32\u0c41\u0c32\u0c41: \u0c2b\u0c32\u0c15\u0c4d\u200c\u0c28\u0c41\u0c2e\u0c3e<br>\u0c24\u0c40\u0c35\u0c4d\u0c30\u0c24: \u0c2e\u0c27\u0c4d\u0c2f\u0c38\u0c4d\u0c25<br>\u0c09\u0c37\u0c4d\u0c23\u0c4b\u0c17\u0c4d\u0c30\u0c24: 37.1\u00b0C&quot;, &quot;kn&quot;: &quot;\ud83d\udd25 \u0cb6\u0cbe\u0c96\u0ca6 \u0c85\u0cb2\u0cc6: \u0cab\u0cb2\u0c95\u0ccd\u0ca8\u0cc1\u0cae\u0cbe<br>\u0ca4\u0cc0\u0cb5\u0ccd\u0cb0\u0ca4\u0cc6: \u0cae\u0ca7\u0ccd\u0caf\u0cae<br>\u0ca4\u0cbe\u0caa: 37.1\u00b0C&quot;, &quot;ml&quot;: &quot;\ud83d\udd25 \u0d09\u0d37\u0d4d\u0d23\u0d24\u0d30\u0d02\u0d17\u0d02: \u0d2b\u0d32\u0d15\u0d4d\u0d28\u0d41\u0d2e<br>\u0d24\u0d40\u0d35\u0d4d\u0d30\u0d24: \u0d07\u0d1f\u0d24\u0d4d\u0d24\u0d30\u0d02<br>\u0d24\u0d3e\u0d2a\u0d28\u0d3f\u0d32: 37.1\u00b0C&quot;, &quot;bn&quot;: &quot;\ud83d\udd25 \u09a4\u09be\u09aa\u09aa\u09cd\u09b0\u09ac\u09be\u09b9: \u09ab\u09b2\u0995\u09a8\u09c1\u09ae\u09be<br>\u09a4\u09c0\u09ac\u09cd\u09b0\u09a4\u09be: \u09ae\u09be\u099d\u09be\u09b0\u09bf<br>\u09a4\u09be\u09aa: 37.1\u00b0C&quot;, &quot;mr&quot;: &quot;\ud83d\udd25 \u0909\u0937\u094d\u0923\u0924\u0947\u091a\u0940 \u0932\u093e\u091f: \u092b\u0932\u0915\u0928\u0941\u092e\u093e<br>\u0924\u0940\u0935\u094d\u0930\u0924\u093e: \u092e\u0927\u094d\u092f\u092e<br>\u0924\u093e\u092a\u092e\u093e\u0928: 37.1\u00b0C&quot;, &quot;gu&quot;: &quot;\ud83d\udd25 \u0ab9\u0ac0\u0a9f\u0ab5\u0ac7\u0ab5: \u0aab\u0ab2\u0a95\u0aa8\u0ac1\u0aae\u0abe<br>\u0aa4\u0ac0\u0ab5\u0acd\u0ab0\u0aa4\u0abe: \u0aae\u0aa7\u0acd\u0aaf\u0aae<br>\u0aa4\u0abe\u0aaa\u0aae\u0abe\u0aa8: 37.1\u00b0C&quot;, &quot;pa&quot;: &quot;\ud83d\udd25 \u0a39\u0a40\u0a1f\u0a35\u0a47\u0a35: \u0a2b\u0a32\u0a15\u0a28\u0a41\u0a2e\u0a3e<br>\u0a24\u0a40\u0a2c\u0a30\u0a24\u0a3e: \u0a2e\u0a71\u0a27\u0a2e<br>\u0a24\u0a3e\u0a2a\u0a2e\u0a3e\u0a28: 37.1\u00b0C&quot;, &quot;ur&quot;: &quot;\ud83d\udd25 \u06c1\u06cc\u0679 \u0648\u06cc\u0648: \u0641\u0644\u06a9 \u0646\u0645\u0627<br>\u0634\u062f\u062a: \u062f\u0631\u0645\u06cc\u0627\u0646\u06c1<br>\u062f\u0631\u062c\u06c1 \u062d\u0631\u0627\u0631\u062a: 37.1\u00b0C&quot;, &quot;as&quot;: &quot;\ud83d\udd25 \u0997\u09f0\u09ae\u09f0 \u09a2\u09cc: \u09ab\u09be\u09b2\u09be\u0995\u09a8\u09c1\u09ae\u09be<br>\u0997\u09c1\u09f0\u09c1\u09a4\u09cd\u09ac: \u09ae\u09a7\u09cd\u09af\u09ae\u09c0\u09af\u09bc\u09be<br>\u0989\u09b7\u09cd\u09a3\u09a4\u09be: \u09e9\u09ed.\u09e7 \u09a1\u09bf\u0997\u09cd\u09f0\u09c0 \u099a\u09c7\u09b2\u099b\u09bf\u09af\u09bc\u09be\u099b&quot;, &quot;or&quot;: &quot;\ud83d\udd25 \u0b09\u0b24\u0b4d\u0b24\u0b3e\u0b2a \u0b24\u0b30\u0b19\u0b4d\u0b17: \u0b2b\u0b3e\u0b32\u0b15\u0b28\u0b41\u0b2e\u0b3e <br> \u0b17\u0b2e\u0b4d\u0b2d\u0b40\u0b30\u0b24\u0b3e: \u0b2e\u0b27\u0b4d\u0b5f\u0b2e <br> \u0b1f\u0b47\u0b2e\u0b4d\u0b2a: 37.1 \u00b0 C&quot;}">🔥 Heatwave: Falaknuma<br>Severity: Medium<br>Temp: 37.1°C</div></div>`)[0];
+                popup_c436b07ec76e26d2183202d6178ccd38.setContent(html_25e2aa0a4034acc31f712b2ea3e4d319);
+            
+        
+
+        circle_marker_3b8a2093379d0d9154220af84fe78e79.bindPopup(popup_c436b07ec76e26d2183202d6178ccd38)
+        ;
+
+        
+    
+    
+            var circle_marker_847e12e473345e0477e78994424df854 = L.circleMarker(
+                [17.3457, 78.552],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 50, "stroke": true, "weight": 3}
+            ).addTo(map_3cacc60d530523bc82721f5b908bffd6);
+        
+    
+        var popup_d32186d5ffd62c815909ce06c26da250 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b43b701d98dee7313b1ea9cd57979978 = $(`<div id="html_b43b701d98dee7313b1ea9cd57979978" style="width: 100.0%; height: 100.0%;"><div data-translate="{&quot;en&quot;: &quot;\ud83d\udd25 Heatwave: LB Nagar<br>Severity: Medium<br>Temp: 37.6\u00b0C&quot;, &quot;hi&quot;: &quot;\ud83d\udd25 \u0932\u0942: \u090f\u0932\u092c\u0940 \u0928\u0917\u0930<br>\u0924\u0940\u0935\u094d\u0930\u0924\u093e: \u092e\u0927\u094d\u092f\u092e<br>\u0924\u093e\u092a\u092e\u093e\u0928: 37.6 \u0921\u093f\u0917\u094d\u0930\u0940 \u0938\u0947\u0932\u094d\u0938\u093f\u092f\u0938&quot;, &quot;ta&quot;: &quot;\ud83d\udd25 \u0bb5\u0bc6\u0baa\u0bcd\u0baa \u0b85\u0bb2\u0bc8: LB \u0ba8\u0b95\u0bb0\u0bcd<br>\u0b95\u0b9f\u0bc1\u0bae\u0bc8: \u0ba8\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb0<br>\u0bb5\u0bc6\u0baa\u0bcd\u0baa\u0ba8\u0bbf\u0bb2\u0bc8: 37.6\u00b0C&quot;, &quot;te&quot;: &quot;\ud83d\udd25 \u0c39\u0c40\u0c1f\u0c4d\u200c\u0c35\u0c47\u0c35\u0c4d: LB \u0c28\u0c17\u0c30\u0c4d<br>\u0c24\u0c40\u0c35\u0c4d\u0c30\u0c24: \u0c2e\u0c27\u0c4d\u0c2f\u0c38\u0c4d\u0c25\u0c02<br>\u0c09\u0c37\u0c4d\u0c23\u0c4b\u0c17\u0c4d\u0c30\u0c24: 37.6\u00b0C&quot;, &quot;kn&quot;: &quot;\ud83d\udd25 \u0cb6\u0cbe\u0c96\u0ca6 \u0c85\u0cb2\u0cc6: LB \u0ca8\u0c97\u0cb0<br>\u0ca4\u0cc0\u0cb5\u0ccd\u0cb0\u0ca4\u0cc6: \u0cae\u0ca7\u0ccd\u0caf\u0cae<br>\u0ca4\u0cbe\u0caa: 37.6\u00b0C&quot;, &quot;ml&quot;: &quot;\ud83d\udd25 \u0d39\u0d40\u0d31\u0d4d\u0d31\u0d4d\u200c\u0d35\u0d47\u0d35\u0d4d: \u0d0e\u0d7d\u0d2c\u0d3f \u0d28\u0d17\u0d7c<br>\u0d24\u0d40\u0d35\u0d4d\u0d30\u0d24: \u0d07\u0d1f\u0d24\u0d4d\u0d24\u0d30\u0d02<br>\u0d24\u0d3e\u0d2a\u0d28\u0d3f\u0d32: 37.6\u00b0C&quot;, &quot;bn&quot;: &quot;\ud83d\udd25 \u09a4\u09be\u09aa\u09aa\u09cd\u09b0\u09ac\u09be\u09b9: LB \u09a8\u0997\u09b0<br>\u09a4\u09c0\u09ac\u09cd\u09b0\u09a4\u09be: \u09ae\u09be\u099d\u09be\u09b0\u09bf<br>\u09a4\u09be\u09aa: 37.6\u00b0C&quot;, &quot;mr&quot;: &quot;\ud83d\udd25 \u0909\u0937\u094d\u0923\u0924\u0947\u091a\u0940 \u0932\u093e\u091f: LB \u0928\u0917\u0930<br>\u0924\u0940\u0935\u094d\u0930\u0924\u093e: \u092e\u0927\u094d\u092f\u092e<br>\u0924\u093e\u092a\u092e\u093e\u0928: 37.6\u00b0C&quot;, &quot;gu&quot;: &quot;\ud83d\udd25 \u0ab9\u0ac0\u0a9f\u0ab5\u0ac7\u0ab5: LB \u0aa8\u0a97\u0ab0<br>\u0aa4\u0ac0\u0ab5\u0acd\u0ab0\u0aa4\u0abe: \u0aae\u0aa7\u0acd\u0aaf\u0aae<br>\u0aa4\u0abe\u0aaa\u0aae\u0abe\u0aa8: 37.6\u00b0C&quot;, &quot;pa&quot;: &quot;\ud83d\udd25 \u0a39\u0a40\u0a1f\u0a35\u0a47\u0a35: LB \u0a28\u0a17\u0a30<br>\u0a24\u0a40\u0a2c\u0a30\u0a24\u0a3e: \u0a2e\u0a71\u0a27\u0a2e<br>\u0a24\u0a3e\u0a2a\u0a2e\u0a3e\u0a28: 37.6\u00b0C&quot;, &quot;ur&quot;: &quot;\ud83d\udd25 \u06c1\u06cc\u0679 \u0648\u06cc\u0648: \u0627\u06cc\u0644 \u0628\u06cc \u0646\u06af\u0631<br>\u0634\u062f\u062a: \u062f\u0631\u0645\u06cc\u0627\u0646\u06c1<br>\u062f\u0631\u062c\u06c1 \u062d\u0631\u0627\u0631\u062a: 37.6\u00b0C&quot;, &quot;as&quot;: &quot;\ud83d\udd25 \u0997\u09f0\u09ae\u09f0 \u09a2\u09cc: \u098f\u09b2 \u09ac\u09bf \u09a8\u0997\u09f0<br>\u0997\u09c1\u09f0\u09c1\u09a4\u09cd\u09ac: \u09ae\u09a7\u09cd\u09af\u09ae<br>\u0989\u09b7\u09cd\u09a3\u09a4\u09be: \u09e9\u09ed.\u09ec \u09a1\u09bf\u0997\u09cd\u09f0\u09c0 \u099a\u09c7\u09b2\u099b\u09bf\u09af\u09bc\u09be\u099b&quot;, &quot;or&quot;: &quot;\ud83d\udd25 \u0b09\u0b24\u0b4d\u0b24\u0b3e\u0b2a \u0b24\u0b30\u0b19\u0b4d\u0b17: LB \u0b28\u0b3e\u0b17\u0b30 <br> \u0b17\u0b2e\u0b4d\u0b2d\u0b40\u0b30\u0b24\u0b3e: \u0b2e\u0b27\u0b4d\u0b5f\u0b2e <br> \u0b1f\u0b47\u0b2e\u0b4d\u0b2a: 37.6 \u00b0 C&quot;}">🔥 Heatwave: LB Nagar<br>Severity: Medium<br>Temp: 37.6°C</div></div>`)[0];
+                popup_d32186d5ffd62c815909ce06c26da250.setContent(html_b43b701d98dee7313b1ea9cd57979978);
+            
+        
+
+        circle_marker_847e12e473345e0477e78994424df854.bindPopup(popup_d32186d5ffd62c815909ce06c26da250)
+        ;
+
+        
+    
+    
+            var circle_marker_c96e27a34fa6ee11ba84b0dbf4b4196f = L.circleMarker(
+                [17.4058, 78.5591],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 50, "stroke": true, "weight": 3}
+            ).addTo(map_3cacc60d530523bc82721f5b908bffd6);
+        
+    
+        var popup_aa71f61be21a4b57c5ceafd42c703a45 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8379a3a96cc35b605a1fe0d1e9289abb = $(`<div id="html_8379a3a96cc35b605a1fe0d1e9289abb" style="width: 100.0%; height: 100.0%;"><div data-translate="{&quot;en&quot;: &quot;\ud83d\udd25 Heatwave: Uppal<br>Severity: Medium<br>Temp: 37.6\u00b0C&quot;, &quot;hi&quot;: &quot;\ud83d\udd25 \u0939\u0940\u091f\u0935\u0947\u0935: \u0909\u092a\u094d\u092a\u0932<br>\u0924\u0940\u0935\u094d\u0930\u0924\u093e: \u092e\u0927\u094d\u092f\u092e<br>\u0924\u093e\u092a\u092e\u093e\u0928: 37.6\u00b0C&quot;, &quot;ta&quot;: &quot;\ud83d\udd25 \u0bb5\u0bc6\u0baa\u0bcd\u0baa \u0b85\u0bb2\u0bc8: \u0b89\u0baa\u0bcd\u0baa\u0bb2\u0bcd<br>\u0b95\u0b9f\u0bc1\u0bae\u0bc8: \u0ba8\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb0<br>\u0bb5\u0bc6\u0baa\u0bcd\u0baa\u0ba8\u0bbf\u0bb2\u0bc8: 37.6\u00b0C&quot;, &quot;te&quot;: &quot;\ud83d\udd25 \u0c39\u0c40\u0c1f\u0c4d \u0c35\u0c47\u0c35\u0c4d: \u0c09\u0c2a\u0c4d\u0c2a\u0c32\u0c4d<br>\u0c24\u0c40\u0c35\u0c4d\u0c30\u0c24: \u0c2e\u0c27\u0c4d\u0c2f\u0c38\u0c4d\u0c25<br>\u0c09\u0c37\u0c4d\u0c23\u0c4b\u0c17\u0c4d\u0c30\u0c24: 37.6\u00b0C&quot;, &quot;kn&quot;: &quot;\ud83d\udd25 \u0cb6\u0cbe\u0c96\u0ca6 \u0c85\u0cb2\u0cc6: \u0c89\u0caa\u0ccd\u0caa\u0cb2\u0ccd<br>\u0ca4\u0cc0\u0cb5\u0ccd\u0cb0\u0ca4\u0cc6: \u0cae\u0ca7\u0ccd\u0caf\u0cae<br>\u0ca4\u0cbe\u0caa: 37.6\u00b0C&quot;, &quot;ml&quot;: &quot;\ud83d\udd25 \u0d09\u0d37\u0d4d\u0d23\u0d24\u0d30\u0d02\u0d17\u0d02: \u0d09\u0d2a\u0d4d\u0d2a\u0d7d<br>\u0d24\u0d40\u0d35\u0d4d\u0d30\u0d24: \u0d07\u0d1f\u0d24\u0d4d\u0d24\u0d30\u0d02<br>\u0d24\u0d3e\u0d2a\u0d28\u0d3f\u0d32: 37.6\u00b0C&quot;, &quot;bn&quot;: &quot;\ud83d\udd25 \u09a4\u09be\u09aa\u09aa\u09cd\u09b0\u09ac\u09be\u09b9: \u0989\u09ce\u09aa\u09b2<br>\u09a4\u09c0\u09ac\u09cd\u09b0\u09a4\u09be: \u09ae\u09be\u099d\u09be\u09b0\u09bf<br>\u09a4\u09be\u09aa: 37.6\u00b0C&quot;, &quot;mr&quot;: &quot;\ud83d\udd25 \u0909\u0937\u094d\u0923\u0924\u0947\u091a\u0940 \u0932\u093e\u091f: \u0909\u092a\u094d\u092a\u0932<br>\u0924\u0940\u0935\u094d\u0930\u0924\u093e: \u092e\u0927\u094d\u092f\u092e<br>\u0924\u093e\u092a\u092e\u093e\u0928: 37.6\u00b0C&quot;, &quot;gu&quot;: &quot;\ud83d\udd25 \u0ab9\u0ac0\u0a9f\u0ab5\u0ac7\u0ab5: \u0a89\u0aaa\u0acd\u0aaa\u0ab2<br>\u0aa4\u0ac0\u0ab5\u0acd\u0ab0\u0aa4\u0abe: \u0aae\u0aa7\u0acd\u0aaf\u0aae<br>\u0aa4\u0abe\u0aaa\u0aae\u0abe\u0aa8: 37.6\u00b0C&quot;, &quot;pa&quot;: &quot;\ud83d\udd25 \u0a39\u0a40\u0a1f\u0a35\u0a47\u0a35: \u0a09\u0a71\u0a2a\u0a32<br>\u0a24\u0a40\u0a2c\u0a30\u0a24\u0a3e: \u0a2e\u0a71\u0a27\u0a2e<br>\u0a24\u0a3e\u0a2a\u0a2e\u0a3e\u0a28: 37.6\u00b0C&quot;, &quot;ur&quot;: &quot;\ud83d\udd25 \u06c1\u06cc\u0679 \u0648\u06cc\u0648: \u0627\u067e\u0644<br>\u0634\u062f\u062a: \u062f\u0631\u0645\u06cc\u0627\u0646\u06c1<br>\u062f\u0631\u062c\u06c1 \u062d\u0631\u0627\u0631\u062a: 37.6\u00b0C&quot;, &quot;as&quot;: &quot;\ud83d\udd25 \u0989\u09b7\u09cd\u09a3\u09a4\u09be\u09f0 \u09a2\u09cc: \u0989\u09aa\u09b2<br>\u0997\u09c1\u09f0\u09c1\u09a4\u09cd\u09ac: \u09ae\u09a7\u09cd\u09af\u09ae<br>\u0989\u09b7\u09cd\u09a3\u09a4\u09be: \u09e9\u09ed.\u09ec \u09a1\u09bf\u0997\u09cd\u09f0\u09c0 \u099a\u09c7\u09b2\u099b\u09bf\u09af\u09bc\u09be\u099b&quot;, &quot;or&quot;: &quot;\ud83d\udd25 \u0b09\u0b24\u0b4d\u0b24\u0b3e\u0b2a \u0b24\u0b30\u0b19\u0b4d\u0b17: \u0b09\u0b2a\u0b30 <br> \u0b17\u0b2e\u0b4d\u0b2d\u0b40\u0b30\u0b24\u0b3e: \u0b2e\u0b27\u0b4d\u0b5f\u0b2e <br> \u0b1f\u0b47\u0b2e\u0b4d\u0b2a: 37.6 \u00b0 C |&quot;}">🔥 Heatwave: Uppal<br>Severity: Medium<br>Temp: 37.6°C</div></div>`)[0];
+                popup_aa71f61be21a4b57c5ceafd42c703a45.setContent(html_8379a3a96cc35b605a1fe0d1e9289abb);
+            
+        
+
+        circle_marker_c96e27a34fa6ee11ba84b0dbf4b4196f.bindPopup(popup_aa71f61be21a4b57c5ceafd42c703a45)
+        ;
+
+        
+    
+    
+            var circle_marker_19086e55394e853f23436cb3d098ffec = L.circleMarker(
+                [17.3713, 78.5695],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 50, "stroke": true, "weight": 3}
+            ).addTo(map_3cacc60d530523bc82721f5b908bffd6);
+        
+    
+        var popup_ee6f6b372dada4a6ddc3b50e871b1a98 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1121b0e644473dd0b1bedb6f2b2b6d20 = $(`<div id="html_1121b0e644473dd0b1bedb6f2b2b6d20" style="width: 100.0%; height: 100.0%;"><div data-translate="{&quot;en&quot;: &quot;\ud83d\udd25 Heatwave: Nagole<br>Severity: Medium<br>Temp: 37.7\u00b0C&quot;, &quot;hi&quot;: &quot;\ud83d\udd25 \u0939\u0940\u091f\u0935\u0947\u0935: \u0928\u093e\u0917\u094b\u0932\u0947<br>\u0924\u0940\u0935\u094d\u0930\u0924\u093e: \u092e\u0927\u094d\u092f\u092e<br>\u0924\u093e\u092a\u092e\u093e\u0928: 37.7\u00b0C&quot;, &quot;ta&quot;: &quot;\ud83d\udd25 \u0bb5\u0bc6\u0baa\u0bcd\u0baa \u0b85\u0bb2\u0bc8: \u0ba8\u0bbe\u0b95\u0bcb\u0bb2\u0bcd<br>\u0b95\u0b9f\u0bc1\u0bae\u0bc8: \u0ba8\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0bb0<br>\u0bb5\u0bc6\u0baa\u0bcd\u0baa\u0ba8\u0bbf\u0bb2\u0bc8: 37.7\u00b0C&quot;, &quot;te&quot;: &quot;\ud83d\udd25 \u0c39\u0c40\u0c1f\u0c4d\u200c\u0c35\u0c47\u0c35\u0c4d: \u0c28\u0c3e\u0c17\u0c4b\u0c32\u0c4d<br>\u0c24\u0c40\u0c35\u0c4d\u0c30\u0c24: \u0c2e\u0c27\u0c4d\u0c2f\u0c38\u0c4d\u0c25<br>\u0c09\u0c37\u0c4d\u0c23\u0c4b\u0c17\u0c4d\u0c30\u0c24: 37.7\u00b0C&quot;, &quot;kn&quot;: &quot;\ud83d\udd25 \u0cb6\u0cbe\u0c96\u0ca6 \u0c85\u0cb2\u0cc6: \u0ca8\u0cbe\u0c97\u0ccb\u0cb2\u0ccd<br>\u0ca4\u0cc0\u0cb5\u0ccd\u0cb0\u0ca4\u0cc6: \u0cae\u0ca7\u0ccd\u0caf\u0cae<br>\u0ca4\u0cbe\u0caa: 37.7\u00b0C&quot;, &quot;ml&quot;: &quot;\ud83d\udd25 \u0d09\u0d37\u0d4d\u0d23\u0d24\u0d30\u0d02\u0d17\u0d02: \u0d28\u0d3e\u0d17\u0d4b\u0d7e<br>\u0d24\u0d40\u0d35\u0d4d\u0d30\u0d24: \u0d07\u0d1f\u0d24\u0d4d\u0d24\u0d30\u0d02<br>\u0d24\u0d3e\u0d2a\u0d28\u0d3f\u0d32: 37.7\u00b0C&quot;, &quot;bn&quot;: &quot;\ud83d\udd25 \u09a4\u09be\u09aa\u09aa\u09cd\u09b0\u09ac\u09be\u09b9: \u09a8\u09be\u0997\u09cb\u09b2\u09c7<br>\u09a4\u09c0\u09ac\u09cd\u09b0\u09a4\u09be: \u09ae\u09be\u099d\u09be\u09b0\u09bf<br>\u09a4\u09be\u09aa: 37.7\u00b0C&quot;, &quot;mr&quot;: &quot;\ud83d\udd25 \u0909\u0937\u094d\u0923\u0924\u0947\u091a\u0940 \u0932\u093e\u091f: \u0928\u093e\u0917\u094b\u0933\u0947<br>\u0924\u0940\u0935\u094d\u0930\u0924\u093e: \u092e\u0927\u094d\u092f\u092e<br>\u0924\u093e\u092a\u092e\u093e\u0928: 37.7\u00b0C&quot;, &quot;gu&quot;: &quot;\ud83d\udd25 \u0ab9\u0ac0\u0a9f\u0ab5\u0ac7\u0ab5: \u0aa8\u0abe\u0a97\u0acb\u0ab2<br>\u0aa4\u0ac0\u0ab5\u0acd\u0ab0\u0aa4\u0abe: \u0aae\u0aa7\u0acd\u0aaf\u0aae<br>\u0aa4\u0abe\u0aaa\u0aae\u0abe\u0aa8: 37.7\u00b0C&quot;, &quot;pa&quot;: &quot;\ud83d\udd25 \u0a39\u0a40\u0a1f\u0a35\u0a47\u0a35: \u0a28\u0a3e\u0a17\u0a4b\u0a32<br>\u0a24\u0a40\u0a2c\u0a30\u0a24\u0a3e: \u0a2e\u0a71\u0a27\u0a2e<br>\u0a24\u0a3e\u0a2a\u0a2e\u0a3e\u0a28: 37.7\u00b0C&quot;, &quot;ur&quot;: &quot;\ud83d\udd25 \u06c1\u06cc\u0679 \u0648\u06cc\u0648: \u0646\u0627\u06af\u0648\u0644<br>\u0634\u062f\u062a: \u062f\u0631\u0645\u06cc\u0627\u0646\u06c1<br>\u062f\u0631\u062c\u06c1 \u062d\u0631\u0627\u0631\u062a: 37.7\u00b0C&quot;, &quot;as&quot;: &quot;\ud83d\udd25 \u0997\u09f0\u09ae\u09f0 \u09a2\u09cc: \u09a8\u09be\u0997\u09cb\u09b2\u09c7<br>\u0997\u09c1\u09f0\u09c1\u09a4\u09cd\u09ac: \u09ae\u09a7\u09cd\u09af\u09ae\u09c0\u09af\u09bc\u09be<br>\u0989\u09b7\u09cd\u09a3\u09a4\u09be: \u09e9\u09ed.\u09ed \u09a1\u09bf\u0997\u09cd\u09f0\u09c0 \u099a\u09c7\u09b2\u099b\u09bf\u09af\u09bc\u09be\u099b&quot;, &quot;or&quot;: &quot;\ud83d\udd25 \u0b09\u0b24\u0b4d\u0b24\u0b3e\u0b2a \u0b24\u0b30\u0b19\u0b4d\u0b17: \u0b28\u0b3e\u0b17\u0b4b\u0b32\u0b4d <br> \u0b17\u0b2e\u0b4d\u0b2d\u0b40\u0b30\u0b24\u0b3e: \u0b2e\u0b27\u0b4d\u0b5f\u0b2e <br> \u0b1f\u0b47\u0b2e\u0b4d\u0b2a: 37.7 \u00b0 C |&quot;}">🔥 Heatwave: Nagole<br>Severity: Medium<br>Temp: 37.7°C</div></div>`)[0];
+                popup_ee6f6b372dada4a6ddc3b50e871b1a98.setContent(html_1121b0e644473dd0b1bedb6f2b2b6d20);
+            
+        
+
+        circle_marker_19086e55394e853f23436cb3d098ffec.bindPopup(popup_ee6f6b372dada4a6ddc3b50e871b1a98)
+        ;
+
+        
+    
+    
+            var tile_layer_95450c438b32e2647fce620240b34fba = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detect_retina": false, "max_native_zoom": 19, "max_zoom": 19, "min_zoom": 0, "no_wrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+            var mini_map_5ca7802a7fd8dc516999537c5c059fd0 = new L.Control.MiniMap(
+                tile_layer_95450c438b32e2647fce620240b34fba,
+                {
+  "position": "bottomright",
+  "width": 150,
+  "height": 150,
+  "collapsedWidth": 25,
+  "collapsedHeight": 25,
+  "zoomLevelOffset": -5,
+  "centerFixed": false,
+  "zoomAnimation": false,
+  "toggleDisplay": false,
+  "autoToggleDisplay": false,
+  "minimized": false,
+}
+            );
+            map_3cacc60d530523bc82721f5b908bffd6.addControl(mini_map_5ca7802a7fd8dc516999537c5c059fd0);
+        
+    
+            var measure_control_2a0fad102919b9cd942ad628b26e4a52 = new L.Control.Measure(
+                {
+  "position": "topright",
+  "primaryLengthUnit": "meters",
+  "secondaryLengthUnit": "miles",
+  "primaryAreaUnit": "sqmeters",
+  "secondaryAreaUnit": "acres",
+});
+            map_3cacc60d530523bc82721f5b908bffd6.addControl(measure_control_2a0fad102919b9cd942ad628b26e4a52);
+
+            // Workaround for using this plugin with Leaflet>=1.8.0
+            // https://github.com/ljagis/leaflet-measure/issues/171
+            L.Control.Measure.include({
+                _setCaptureMarkerIcon: function () {
+                    // disable autopan
+                    this._captureMarker.options.autoPanOnFocus = false;
+                    // default function
+                    this._captureMarker.setIcon(
+                        L.divIcon({
+                            iconSize: this._map.getSize().multiplyBy(2)
+                        })
+                    );
+                },
+            });
+
+        
+    
+            tile_layer_ab185b9959d58da0ba5a9c4c5bfdfde9.addTo(map_3cacc60d530523bc82721f5b908bffd6);
+        
+    
+            tile_layer_ab185b9959d58da0ba5a9c4c5bfdfde9.addTo(map_3cacc60d530523bc82721f5b908bffd6);
+        
+    
+            tile_layer_ab185b9959d58da0ba5a9c4c5bfdfde9.addTo(map_3cacc60d530523bc82721f5b908bffd6);
+        
+</script>
+</html>

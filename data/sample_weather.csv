@@ -1,0 +1,9 @@
+location,lat,lon,temperature,wind_speed,precipitation,humidity,soil_moisture,heat_index,zone_type,ml_prediction,severity
+Thennala,11.1,76.1,28.5,42.0,18.5,88.0,0.45,57.3,Flood,Danger,High
+Nilambur,11.28,76.22,26.0,12.0,3.0,72.0,0.2,47.2,Flood,Safe,N/A
+Dhubri Town,26.0186,89.9856,30.0,55.0,22.0,91.0,0.55,59.3,Flood,Danger,High
+Gauripur,26.09,89.95,29.5,8.0,2.5,68.0,0.22,51.9,Flood,Safe,N/A
+Patna,25.5941,85.1376,41.0,6.0,0.2,35.0,0.1,51.8,Heatwave,Heatwave,Medium
+Gaya,24.7914,85.0002,43.5,5.0,0.0,30.0,0.08,52.4,Heatwave,Heatwave,High
+Ameerpet,17.4375,78.4482,34.0,9.0,1.0,45.0,0.15,48.1,Heatwave,Safe,N/A
+Banjara Hills,17.4126,78.4482,38.0,7.0,0.5,40.0,0.12,50.5,Heatwave,Heatwave,Medium
