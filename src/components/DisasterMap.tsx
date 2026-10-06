@@ -248,6 +248,55 @@ export const DisasterMap: React.FC<DisasterMapProps> = ({
             ${zone.district}, ${zone.state}
           </div>
 
+          ${
+            zone.riskAssessment
+              ? `
+            <div style="margin-bottom: 8px; padding: 6px 8px; border-radius: 8px; background: ${
+              zone.riskAssessment.riskLevel === 'CRITICAL'
+                ? 'rgba(255,90,54,0.18)'
+                : zone.riskAssessment.riskLevel === 'HIGH'
+                ? 'rgba(255,90,54,0.12)'
+                : zone.riskAssessment.riskLevel === 'MODERATE'
+                ? 'rgba(245,158,11,0.12)'
+                : 'rgba(16,185,129,0.12)'
+            }; border: 1px solid ${
+              zone.riskAssessment.riskLevel === 'CRITICAL' || zone.riskAssessment.riskLevel === 'HIGH'
+                ? 'rgba(255,90,54,0.3)'
+                : zone.riskAssessment.riskLevel === 'MODERATE'
+                ? 'rgba(245,158,11,0.3)'
+                : 'rgba(16,185,129,0.3)'
+            };">
+              <div style="display: flex; justify-content: space-between; align-items: center; font-family: 'Space Grotesk', sans-serif;">
+                <span style="font-weight: 700; font-size: 12px; color: ${
+                  zone.riskAssessment.riskLevel === 'CRITICAL' || zone.riskAssessment.riskLevel === 'HIGH'
+                    ? '#FF5A36'
+                    : zone.riskAssessment.riskLevel === 'MODERATE'
+                    ? '#F59E0B'
+                    : '#10B981'
+                };">
+                  Risk Score: ${zone.riskAssessment.riskScore} / 100
+                </span>
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 4px; background: ${
+                  zone.riskAssessment.riskLevel === 'CRITICAL' || zone.riskAssessment.riskLevel === 'HIGH'
+                    ? '#FF5A36'
+                    : zone.riskAssessment.riskLevel === 'MODERATE'
+                    ? '#F59E0B'
+                    : '#10B981'
+                }; color: white;">
+                  ${zone.riskAssessment.riskLevel}
+                </span>
+              </div>
+              <div style="font-size: 10px; color: #94A3B8; margin-top: 5px;">
+                <strong style="color: #CBD5E1;">Contributing factors:</strong>
+                <ul style="margin: 3px 0 0 12px; padding: 0;">
+                  ${zone.riskAssessment.factorSummaries.map((f) => `<li>${f}</li>`).join('')}
+                </ul>
+              </div>
+            </div>
+          `
+              : ''
+          }
+
           <div style="background: rgba(120,120,120,0.08); border-radius: 8px; padding: 8px; margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px;">
             ${
               isFlood

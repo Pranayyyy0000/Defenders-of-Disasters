@@ -39,6 +39,24 @@ export interface WeatherData {
   timestamp: string;
 }
 
+export type HyperlocalRiskLevel = 'LOW' | 'MODERATE' | 'HIGH' | 'CRITICAL';
+
+export interface RiskContributingFactor {
+  factor: string;
+  description: string;
+  value: string;
+  points: number;
+  maxPoints: number;
+}
+
+export interface HyperlocalRiskAssessment {
+  riskScore: number; // 0 - 100
+  riskLevel: HyperlocalRiskLevel;
+  contributingFactors: RiskContributingFactor[];
+  factorSummaries: string[];
+  recommendedAction: string;
+}
+
 export interface MonitoredZone {
   id: string;
   name: string;
@@ -51,6 +69,7 @@ export interface MonitoredZone {
   mlPrediction: MLPrediction;
   severityScore: number;
   severityLevel: SeverityLevel;
+  riskAssessment?: HyperlocalRiskAssessment;
   nearestCamp?: {
     camp: ReliefCamp;
     distanceKm: number;
