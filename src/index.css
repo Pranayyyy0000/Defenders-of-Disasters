@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-primary: #F6F5F2;
+    --bg-surface: #FFFFFF;
+    --bg-surface-raised: #EFECE6;
+    --border-subtle: rgba(10, 10, 11, 0.08);
+    --border-active: rgba(10, 10, 11, 0.18);
+    --text-primary: #0A0A0B;
+    --text-secondary: #63625E;
+    --text-tertiary: #96948F;
+    --accent-signal: #FF5A36;
+    --accent-signal-subtle: rgba(255, 90, 54, 0.1);
+    --accent-signal-hover: #E84D2A;
+    --status-safe: #10B981;
+    --status-safe-subtle: rgba(16, 185, 129, 0.12);
+  }
+
+  .dark {
+    --bg-primary: #0A0A0B;
+    --bg-surface: #121214;
+    --bg-surface-raised: #1A1A1E;
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-active: rgba(255, 255, 255, 0.18);
+    --text-primary: #F6F5F2;
+    --text-secondary: #9B9A97;
+    --text-tertiary: #5E5D59;
+    --accent-signal: #FF5A36;
+    --accent-signal-subtle: rgba(255, 90, 54, 0.15);
+    --accent-signal-hover: #FF704F;
+    --status-safe: #10B981;
+    --status-safe-subtle: rgba(16, 185, 129, 0.15);
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.03em;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Calm Control Room Leaflet Map Overrides */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  background: #0f1012 !important;
+  font-family: 'DM Sans', sans-serif !important;
+}
+
+.leaflet-bar {
+  border: 1px solid var(--border-subtle) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+}
+
+.leaflet-bar a {
+  background-color: var(--bg-surface) !important;
+  color: var(--text-primary) !important;
+  border-bottom: 1px solid var(--border-subtle) !important;
+}
+
+.leaflet-bar a:hover {
+  background-color: var(--bg-surface-raised) !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--bg-surface) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25) !important;
+  padding: 0 !important;
+}
+
+.leaflet-popup-content {
+  margin: 14px 16px !important;
+  line-height: 1.4 !important;
+}
+
+.leaflet-popup-tip {
+  background: var(--bg-surface) !important;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom Minimal Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(120, 120, 120, 0.2);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(120, 120, 120, 0.4);
+}

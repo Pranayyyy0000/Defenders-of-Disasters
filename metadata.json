@@ -1,0 +1,6 @@
+{
+  "name": "Guardians of Disasters — AI-Driven Emergency Response System",
+  "description": "AI-driven emergency response and multi-disaster prediction platform featuring real-time weather analytics, ML classification, GIS evacuation mapping, and multilingual alerts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

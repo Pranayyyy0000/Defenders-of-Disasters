@@ -1,79 +1,13 @@
-# ============================================================
-# Guardians of Disasters — .gitignore
-# ============================================================
-
-# ─── Python ───────────────────────────────────────────────
-__pycache__/
-*.py[cod]
-*$py.class
-*.pyc
-*.pyo
-*.pyd
-.Python
-env/
-venv/
-ENV/
-.venv/
-pip-log.txt
-pip-delete-this-directory.txt
-
-# ─── Jupyter / Google Colab ───────────────────────────────
-.ipynb_checkpoints/
-*/.ipynb_checkpoints/*
-*.ipynb_checkpoints
-
-# ─── Environment Variables & Secrets ─────────────────────
-.env
-.env.local
-.env.*
-secrets.py
-config_local.py
-credentials.json
-
-# ─── API Keys (NEVER commit these) ───────────────────────
-# If you accidentally add an API key, revoke it immediately!
-*.key
-*.pem
-
-# ─── OS Files ─────────────────────────────────────────────
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-desktop.ini
-
-# ─── IDE / Editor ─────────────────────────────────────────
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# ─── Build / Dist ─────────────────────────────────────────
+node_modules/
 build/
 dist/
-*.egg-info/
-.eggs/
-*.egg
-
-# ─── Logs ─────────────────────────────────────────────────
+coverage/
+.DS_Store
 *.log
-logs/
+.env*
+!.env.example
 
-# ─── Temporary Files ──────────────────────────────────────
-*.tmp
-*.bak
-*.orig
-tmp/
-temp/
+__pycache__/
+*.pyc
+.env
 
-# ─── Large Data Files ─────────────────────────────────────
-*.csv.gz
-*.parquet
-*.h5
-
-# ─── Google Drive Mount (Colab) ───────────────────────────
-drive/
